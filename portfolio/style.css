@@ -112,3 +112,21 @@ body {
   font-family: inherit;
   font-size: 20px;
 }
+.section-title {
+  width: 50%;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to top, #000 39px, #bdae82 39px, #bdae82 41px, #000 41px);
+}
+.section-title h2 {
+  display: inline;
+  margin: 0;
+  padding: 0 10px;
+  background-color: black;
+  color: #BDAE82;
+  font: 40px 'Merriweather', serif;
+  font-weight: 700;
+}
