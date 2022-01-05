@@ -234,3 +234,21 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.video-player {
+  height: 705px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./assets/img/video-player.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.play-button {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  background-image: url('./assets/svg/play_button.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
