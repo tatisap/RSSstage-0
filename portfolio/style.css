@@ -20,25 +20,26 @@ html {
   scroll-behavior: smooth; 
 }
 body {
+  background-color: black;
   font: 20px 'Inter', sans-serif;
   font-weight: 400;
   color: white;
 }
-.container {
+.container,
+.header-container,
+.hero-container {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 /*header*/
-.header {
+.header-container {
+  display: flex;
+  align-items: center;
   background: url('./assets/img/bg.jpg');
   background-repeat: no-repeat;
   background-position: center 0;
-}
-.header > .container {
-  display: flex;
-  align-items: center;
 }
 .logo {
   width: 50px;
@@ -74,11 +75,40 @@ body {
 .switch-lng {
   font-weight: 700;
 }
-.lng {
+.lng,
+.lng:visited {
   padding: 0 10px;
   line-height: 50px;
+  text-decoration: none;
   transition: .3s;
 }
 .lng:hover {
   color: #bdae82;
+}
+
+/*main*/
+.hero-container {
+  height: 820px;
+  padding-top: 160px;
+  padding-left: 80px;
+  background-image: url('./assets/img/bg.jpg');
+  background-position: center -90px;
+  background-repeat: no-repeat;
+}
+.hero-title {
+  font: 60px 'Merriweather', serif;
+  font-weight: 700;
+}
+.hero-text {
+  height: 120px;
+  line-height: 40px;
+}
+.gold-button {
+  width: 220px;
+  height: 55px;
+  border: 0;
+  background-color: #bdae82;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 20px;
 }
