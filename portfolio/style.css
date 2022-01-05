@@ -27,7 +27,8 @@ body {
 }
 .container,
 .header-container,
-.hero-container {
+.hero-container, 
+.contacts-container {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
@@ -242,6 +243,7 @@ body {
   align-items: center;
   background-image: url('./assets/img/video-player.jpg');
   background-size: contain;
+  background-position: center 0;
   background-repeat: no-repeat;
 }
 .play-button {
@@ -282,10 +284,59 @@ body {
   font-weight: 700;
   line-height: 48px;
 }
-.price-discription {
+.price-description {
   padding-bottom: 40px;
 }
-.price-discription span {
+.price-description span {
   display: block;
   line-height: 36px;
+}
+.contacts-container {
+  padding-top: 60px;
+  padding-left: 970px;
+  height: 700px;
+  background: url('./assets/img/contacts.jpg');
+  background-size: auto 700px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.contacts-title {
+  margin: 0;
+  padding: 10px 0;
+  color: #BDAE82;
+  font: 40px 'Merriweather', serif;
+  font-weight: 700;
+  line-height: 80px;
+}
+.contacts-forms {
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact-form {
+  width: 450px;
+  height: 50px;
+  border: 2px solid #BDAE82;
+  padding: 5px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+::placeholder {
+  color: #bdae82;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 40px;
+  vertical-align: middle;
+}
+.message-form {
+  width: 450px;
+  height: 100px;
+  resize: none;
+  border: 2px solid #BDAE82;
+  padding: 5px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #bdae82;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 40px;
 }
