@@ -252,3 +252,40 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.prices-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  text-align: center;
+}
+.price-item {
+  border: 2px solid #bdae82;
+  padding: 43px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+.price-title {
+  margin: 0;
+  font: 28px 'Merriweather', serif;
+  font-weight: 700;
+  line-height: 56px;
+}
+.price {
+  padding: 20px 0;
+  color: #bdae82;
+  font: 24px 'Merriweather', serif;
+  font-weight: 700;
+  line-height: 48px;
+}
+.price-discription {
+  padding-bottom: 40px;
+}
+.price-discription span {
+  display: block;
+  line-height: 36px;
+}
