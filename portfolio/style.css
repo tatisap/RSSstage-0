@@ -13,13 +13,17 @@
   src: url(./assets/fonts/Merriweather-Bold.ttf);
   font-weight: 700;
 }
-* {
-  box-sizing: border-box;
-}
 html {
+  box-sizing: border-box;
   scroll-behavior: smooth; 
 }
+*, *::before, *::after {
+  box-sizing: inherit;
+}
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: black;
   font: 20px 'Inter', sans-serif;
   font-weight: 400;
@@ -339,4 +343,44 @@ body {
   font-family: inherit;
   font-size: 20px;
   line-height: 40px;
+}
+
+/*footer*/
+.footer .container {
+  padding: 50px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-text {
+  margin: 0;
+}
+.social-list {
+  padding: 9px 0;
+  display: flex;
+  gap: 20px;
+}
+.social-media-icon {
+  width: 32px;
+  height: 32px;
+}
+.social-media-icon:nth-child(1) {
+  background-image: url('./assets/svg/inst\ 1.svg');
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+}
+.social-media-icon:nth-child(2) {
+  background-image: url('./assets/svg/fb\ 1.svg');
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+}
+.social-media-icon:nth-child(3) {
+  background-image: url('./assets/svg/tw\ 1.svg');
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+}
+.social-media-icon:nth-child(4) {
+  background-image: url('./assets/svg/pinterest\ 1.svg');
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
 }
