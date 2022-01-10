@@ -59,6 +59,7 @@ body {
   transition: 0.3s;
 }
 .logo:hover {
+  cursor: pointer;
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
@@ -95,11 +96,13 @@ body {
 .lng-en,
 .lng-ru,
 .lng:visited {
+  color: white;
   line-height: 50px;
   text-decoration: none;
   transition: .3s;
 }
-.lng:hover {
+.lng-en:hover,
+.lng-ru:hover {
   color: #bdae82;
 }
 
@@ -385,6 +388,15 @@ body {
 .footer-text {
   margin: 0;
 }
+.footer-link,
+.footer-link:visited {
+  color: white;
+  text-decoration: none;
+  transition: .3s;
+}
+.footer-link:hover {
+  color: #bdae82;
+}
 .social-list {
   padding: 9px 0;
   display: flex;
@@ -393,6 +405,7 @@ body {
 .social-media-icon {
   width: 32px;
   height: 32px;
+  transition: .3s;
 }
 .social-media-icon:nth-child(1) {
   background-image: url('./assets/svg/inst\ 1.svg');
@@ -413,4 +426,9 @@ body {
   background-image: url('./assets/svg/pinterest\ 1.svg');
   background-size: 32px 32px;
   background-repeat: no-repeat;
+}
+.social-media-icon:hover {
+  cursor: pointer;
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
 }
