@@ -135,6 +135,10 @@ body {
   cursor: pointer;
   font-family: inherit;
   font-size: 20px;
+  transition: 0.3s;
+}
+.gold-button:hover {
+  color: white;
 }
 .section-title {
   margin: 100px auto 60px;
@@ -211,6 +215,10 @@ body {
   color: #bdae82;
   font-family: inherit;
   font-size: 20px;
+  transition: 0.3s;
+}
+.transparent-button:hover {
+  color: white;
 }
 .portfolio-imgs {
   padding-top: 60px;
@@ -279,6 +287,12 @@ body {
   background-image: url('./assets/svg/play_button.svg');
   background-size: contain;
   background-repeat: no-repeat;
+  transition: 0.3s;
+}
+.play-button:hover {
+  cursor: pointer;
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
 }
 .prices-items {
   margin-bottom: 100px;
