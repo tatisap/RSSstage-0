@@ -412,37 +412,46 @@ body {
   color: #bdae82;
 }
 .social-list {
+  margin: 0;
   padding: 9px 0;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
   gap: 20px;
 }
-.social-media-icon {
+.social-media-item {
   width: 32px;
   height: 32px;
   transition: .3s;
 }
-.social-media-icon:nth-child(1) {
+.social-media-item:nth-child(1) {
   background-image: url('./assets/svg/inst\ 1.svg');
   background-size: 32px 32px;
   background-repeat: no-repeat;
 }
-.social-media-icon:nth-child(2) {
+.social-media-item:nth-child(2) {
   background-image: url('./assets/svg/fb\ 1.svg');
   background-size: 32px 32px;
   background-repeat: no-repeat;
 }
-.social-media-icon:nth-child(3) {
+.social-media-item:nth-child(3) {
   background-image: url('./assets/svg/tw\ 1.svg');
   background-size: 32px 32px;
   background-repeat: no-repeat;
 }
-.social-media-icon:nth-child(4) {
+.social-media-item:nth-child(4) {
   background-image: url('./assets/svg/pinterest\ 1.svg');
   background-size: 32px 32px;
   background-repeat: no-repeat;
 }
-.social-media-icon:hover {
+.social-media-item:hover {
   cursor: pointer;
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
+}
+.social-media-link {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
