@@ -270,27 +270,27 @@ body {
   background-repeat: no-repeat;
 }
 .video-player {
-  height: 705px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('./assets/img/video-player.jpg');
-  background-size: contain;
-  background-position: center 0;
-  background-repeat: no-repeat;
+}
+.video-bg {
+  width: 100%;
 }
 .play-button {
   position: absolute;
   width: 130px;
   height: 130px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
   background-image: url('./assets/svg/play_button.svg');
   background-size: contain;
   background-repeat: no-repeat;
   transition: 0.3s;
 }
 .play-button:hover {
-  cursor: pointer;
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
