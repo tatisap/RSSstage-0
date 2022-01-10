@@ -368,6 +368,10 @@ body {
   border: 2px solid #BDAE82;
   padding: 3px 18px;
   background-color: rgba(0, 0, 0, 0.5);
+  color: #bdae82;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 40px;
 }
 ::placeholder {
   color: #bdae82;
