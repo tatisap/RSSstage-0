@@ -195,7 +195,7 @@ body {
 }
 .skill-item-title {
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 21px;
   font-weight: 700;
   line-height: 40px;
 }
@@ -275,7 +275,7 @@ body {
   justify-content: space-between;
   align-items: center;
   flex: 1;
-  padding: 42px 0px;
+  padding: 41px 0px;
   border: 2px solid #bdae82;
 }
 .price-title {
