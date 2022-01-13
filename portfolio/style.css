@@ -75,13 +75,13 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 31px;
   margin: 0;
-  padding-right: 16px;
+  padding-right: 31px;
   padding-left: 0px;
   list-style: none;
 }
 .nav-link {
-  padding: 0 15px;
   color: white;
   text-decoration: none;
   line-height: 50px;
