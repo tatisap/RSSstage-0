@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
@@ -14,15 +14,15 @@
       <div class="logo"></div>
       <nav class="nav">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-          <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li class="nav-item"><a href="#video" class="nav-link">Video</a></li>
-          <li class="nav-item"><a href="#prices" class="nav-link">Price</a></li>
-          <li class="nav-item"><a href="#contacts" class="nav-link">Contacts</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#video">Video</a></li>
+          <li class="nav-item"><a class="nav-link" href="#prices">Price</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacts">Contacts</a></li>
         </ul>
       </nav>
       <div class="switch-lng">
-        <a class="lng-en" href="./index.html">en</a><span class="divider">/</span><a class="lng-ru" href="">ru</a>
+        <a class="lng-en" href="#!">en</a><span>/</span><a class="lng-ru" href="#!">ru</a>
       </div>
     </div>
   </header>
@@ -32,14 +32,15 @@
           <h1 class="hero-title">Alexa Rise</h1>
           <p class="hero-text">Save sincere emotions, romantic feelings and<br>
             happy moments of life together with professional<br>
-            photographer Alexa Rise</p>
+            photographer Alexa Rise
+          </p>
           <button class="gold-button">Hire me</button>
       </section>
     </div>
     <div class="container">  
       <section class="section" id="skills">
         <div class="section-title">
-          <h2>Skills</h2>
+          <h2 class="section-title-text">Skills</h2>
         </div>
         <div class="skills-items">
           <div class="skill-item">
@@ -62,26 +63,26 @@
       </section>
       <section class="section" id="portfolio">
         <div class="section-title">
-          <h2>Portfolio</h2>
+          <h2 class="section-title-text">Portfolio</h2>
         </div>
-        <div class="buttons">
+        <div class="seasons-buttons">
           <button class="transparent-button">Winter</button>
           <button class="transparent-button">Spring</button>
           <button class="transparent-button">Summer</button>
           <button class="transparent-button">Autumn</button>
         </div>
         <div class="portfolio-imgs">
-          <div class="portfolio-img"></div>
-          <div class="portfolio-img"></div>
-          <div class="portfolio-img"></div>
-          <div class="portfolio-img"></div>
-          <div class="portfolio-img"></div>
-          <div class="portfolio-img"></div>
+          <img src="./assets/img/portfolio-img.jpg" alt="Portfolio photo" class="portfolio-img">
+          <img src="./assets/img/portfolio-img-1.jpg" alt="Portfolio photo" class="portfolio-img">
+          <img src="./assets/img/portfolio-img-2.jpg" alt="Portfolio photo" class="portfolio-img">
+          <img src="./assets/img/portfolio-img-3.jpg" alt="Portfolio photo" class="portfolio-img">
+          <img src="./assets/img/portfolio-img-4.jpg" alt="Portfolio photo" class="portfolio-img">
+          <img src="./assets/img/portfolio-img-5.jpg" alt="Portfolio photo" class="portfolio-img">
         </div>
       </section>
       <section class="section" id="video">
         <div class="section-title">
-          <h2>Video</h2>
+          <h2 class="section-title-text">Video</h2>
         </div>
         <div class="video-player">
           <img class="video-bg" src="./assets/img/video-player.jpg" alt="video-player">
@@ -90,7 +91,7 @@
       </section>
       <section class="section" id="prices">
         <div class="section-title">
-          <h2>Price</h2>
+          <h2 class="section-title-text">Price</h2>
         </div>
         <div class="prices-items">
           <div class="price-item">
@@ -132,29 +133,29 @@
         </div>
       </section>
     </div>
-      <div class="contacts-container">
-        <section class="section" id="contacts">
-          <div class="contacts-wrap">
-            <h2 class="contacts-title">Contact me</h2>
-            <div class="contacts-forms">
-              <input class="contact-form" type="email" placeholder="E-mail">
-              <input class="contact-form" type="tel" placeholder="Phone">
-              <textarea class="message-form" name="message-me" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-            </div>
-            <button class="gold-button">Send message</button>
+    <div class="contacts-container">
+      <section class="section" id="contacts">
+        <div class="contacts-wrap">
+          <h2 class="contacts-title">Contact me</h2>
+          <div class="contacts-forms">
+            <input class="contact-form" type="email" placeholder="E-mail">
+            <input class="contact-form" type="tel" placeholder="Phone">
+            <textarea class="message-form" name="message-me" id="message" cols="30" rows="10" placeholder="Message"></textarea>
           </div>
-          </section>
-      </div>
+          <button class="gold-button">Send message</button>
+        </div>
+        </section>
+    </div>
   </main>
   <footer class="footer">
     <div class="container">
       <div class="footer-data"><span>©</span><span>2022</span><span><a class="footer-link" href="https://github.com/tatisap">github</a></span></div>
       <p class="footer-text"><a class="footer-link" href="https://rs.school/js-stage0/">Rolling Scopes School</a></p>
-      <ul class="social-list">
-        <li class="social-media-item"><a class="social-media-link" href="!="></a></li>
-        <li class="social-media-item"><a class="social-media-link" href="!="></a></li>
-        <li class="social-media-item"><a class="social-media-link" href="!="></a></li>
-        <li class="social-media-item"><a class="social-media-link" href="!="></a></li>
+      <ul class="social-media-list">
+        <li class="social-media-item"><a class="social-media-link" href="#!"></a></li>
+        <li class="social-media-item"><a class="social-media-link" href="#!"></a></li>
+        <li class="social-media-item"><a class="social-media-link" href="#!"></a></li>
+        <li class="social-media-item"><a class="social-media-link" href="#!"></a></li>
       </ul>
     </div>
   </footer>
