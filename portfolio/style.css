@@ -127,6 +127,7 @@ body {
   line-height: 120px;
 }
 .hero-text {
+  width: 470px;
   margin: 0;
   margin-bottom: 25px;
   height: 120px;
@@ -421,4 +422,117 @@ body {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* Adaptive */
+.hamburger {
+  display: none;
+  z-index: 4;
+}
+.hamburger:hover{
+  cursor: pointer;
+}
+.hamburger.is-active {
+  position: fixed;
+  right: 64px;
+  margin: 0;
+}
+.hamburger .line{
+  width: 50px;
+  height: 3px;
+  background-color: white;
+  display: block;
+  margin: 10px auto;
+  transition: all 0.3s ease-in-out;
+}
+.hamburger.is-active .line:nth-child(2){
+  opacity: 0;
+}
+.hamburger.is-active .line:nth-child(1){
+  transform: translateY(13px) rotate(45deg);
+}
+.hamburger.is-active .line:nth-child(3){
+  transform: translateY(-13px) rotate(-45deg);
+}
+
+@media (max-width: 1440px) {
+
+}
+@media (max-width: 768px) {
+  .header-container,
+  .hero-container {
+    padding-left: 60px;
+  }
+  .header-container {
+    background-position: -5px -30px;
+    background-size: auto 620px;
+  }
+  .hero-container {
+    height: 500px;
+    padding-top: 78px;
+    background-position: -5px -120px;
+    background-size: auto 620px;
+  }
+  .switch-lng {
+    margin-left: auto;
+    padding-right: 20px;
+  }
+  .lng-ru{
+    padding-left: 18px;
+  }
+  .hamburger {
+    display: block;
+    margin-right: 44px;
+  }
+  .nav {
+    position: fixed;
+    top: 0px;
+    right: -620px;
+    display: none;
+    width: 620px;
+    height: 100vh;
+    padding-top: 134px;
+    padding-left: 127px;
+    background-color: black;
+    z-index: 3;
+  }
+  .nav.is-active {
+    right: 0px;
+    display: block;
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 0;
+    list-style: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 34.8235px;
+    line-height: 73px;
+  }
+  .blackout {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+  .hero-title {
+    padding-bottom: 20px;
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 64px;
+  }
+  .hero-text {
+    width: 390px;
+    height: 72px;
+    margin-bottom: 60px;
+    line-height: 24px;
+
+  }
 }
