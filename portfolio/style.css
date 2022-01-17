@@ -630,6 +630,13 @@ body {
   }
 }
 
+/* adaptive 730px */
+@media (max-width: 730px) {
+  .skills-items {
+    justify-content: center;
+  }
+}
+
 /* adaptive 619px */
 @media (max-width: 619px) {
   .nav {
@@ -652,9 +659,6 @@ body {
   }
   .hero-text {
     width: 280px;
-  }
-  .skills-items {
-    justify-content: center;
   }
   .portfolio-img {
     width: 300px;
