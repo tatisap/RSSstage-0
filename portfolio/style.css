@@ -461,6 +461,53 @@ body {
   transform: translateY(-13px) rotate(-45deg);
 }
 
+/* adaptive 960px */
+@media (max-width: 960px) {
+  .skills-items {
+    gap: 0;
+    row-gap: 36px;
+    padding: 0 64px 38px 60px;
+  }
+  .skill-item {
+    flex: 1 1 auto;
+    max-width: 300px; 
+    padding: 80px 10px 40px;
+  }
+  .skill-item-text {
+    line-height: 22px;
+  }
+  .seasons-buttons {
+    max-width: 445px;
+    margin: 0 auto;
+    padding-top: 5px;
+  }
+  .prices-items {
+    gap: 50px;
+    margin-bottom: 80px;
+    padding-top: 4px;
+  }
+  .price-item {
+    flex-basis: 420px;
+    max-width: 420px;
+  }
+  .contacts-container {
+    height: 600px;
+    background-size: auto 600px;
+  }
+  .contacts-wrap {
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .contacts-title {
+    margin-top: 60px;
+    font-size: 32px;
+    line-height: 64px;
+  }
+}
 /* adaptive 768px */
 @media (max-width: 768px) {
   .container {
@@ -549,23 +596,6 @@ body {
   .section-title-text {
     font-size: 32px;
   }
-  .skills-items {
-    gap: 36px 44px;
-    padding: 0 64px 38px 60px;
-  }
-  .skill-item {
-    flex: 1 1 auto;
-    width: 300px;
-    padding: 80px 10px 40px;
-  }
-  .skill-item-text {
-    line-height: 22px;
-  }
-  .seasons-buttons {
-    max-width: 445px;
-    margin: 0 auto;
-    padding-top: 5px;
-  }
   .video-bg {
     display: none;
   }
@@ -579,32 +609,6 @@ body {
     height: 65px;
     margin-top: 3px;
     margin-right: 1px;
-  }
-  .prices-items {
-    gap: 50px;
-    margin-bottom: 80px;
-    padding-top: 4px;
-  }
-  .price-item {
-    flex-basis: 420px;
-    max-width: 420px;
-  }
-  .contacts-container {
-    height: 600px;
-    background-size: auto 600px;
-  }
-  .contacts-wrap {
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-  }
-  .contacts-title {
-    margin-top: 60px;
-    font-size: 32px;
-    line-height: 64px;
   }
   .footer .container {
     display: flex;
