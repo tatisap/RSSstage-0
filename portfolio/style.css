@@ -629,3 +629,34 @@ body {
     padding-top: 13px;
   }
 }
+
+/* adaptive 480px */
+@media (max-width: 480px) {
+  .hamburger {
+    margin-right: 0;
+  }
+  .hero-text {
+    width: 280px;
+  }
+  .skills-items {
+    justify-content: center;
+  }
+  .portfolio-img {
+    width: 300px;
+    height: auto;
+  }
+  .contact-form {
+    width: 300px;
+  }
+  .message-form {
+    width: 300px;
+  }
+}
+
+/* adaptive 320px*/
+@media (max-width: 320px) {
+  .header-container,
+  .hero-container {
+    padding-left: 20px;
+  }
+}
