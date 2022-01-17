@@ -520,6 +520,7 @@ body {
   .header-container {
     background-position: -5px -30px;
     background-size: auto 620px;
+    overflow-x: hidden;
   }
   .hero-container {
     height: 500px;
@@ -542,17 +543,16 @@ body {
     position: fixed;
     top: 0px;
     right: -620px;
-    display: none;
     width: 620px;
     height: 100vh;
     padding-top: 134px;
     padding-left: 127px;
     background-color: black;
     z-index: 3;
+    transition: 0.5s;
   }
   .nav.is-active {
     right: 0px;
-    display: block;
   }
   .nav-list {
     display: flex;
@@ -630,10 +630,25 @@ body {
   }
 }
 
+/* adaptive 619px */
+@media (max-width: 619px) {
+  .nav {
+    width: 100vw;
+    padding: 100px 0 0;
+  }
+  .nav-list {
+    align-items: center;
+    padding-right: 0;
+  }
+}
+
 /* adaptive 480px */
 @media (max-width: 480px) {
   .hamburger {
     margin-right: 0;
+  }
+  .hamburger.is-active {
+    right: 20px;
   }
   .hero-text {
     width: 280px;
