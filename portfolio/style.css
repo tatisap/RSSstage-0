@@ -556,10 +556,11 @@ body {
     position: fixed;
     top: 0px;
     right: -620px;
-    width: 620px;
+    width: calc(100vw - 148px);
     height: 100vh;
     padding-top: 134px;
     padding-left: 127px;
+    overflow-y: scroll;
     background-color: black;
     z-index: 3;
     transition: 0.5s;
