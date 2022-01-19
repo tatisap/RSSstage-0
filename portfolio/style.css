@@ -14,6 +14,11 @@
   src: url(./assets/fonts/Merriweather-Bold.ttf);
   font-weight: 700;
 }
+@font-face {
+  font-family: 'Merriweather';
+  src: url(./assets/fonts/Merriweather-Regular.ttf);
+  font-weight: 400;
+}
 
 /* common style */
 html {
@@ -576,10 +581,8 @@ body {
   }
   .hero-title {
     padding-bottom: 20px;
-    font-family: 'Merriweather';
-    font-style: normal;
+    font: 32px 'Merriweather', serif;
     font-weight: 400;
-    font-size: 32px;
     line-height: 64px;
   }
   .hero-text {
