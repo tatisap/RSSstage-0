@@ -233,6 +233,10 @@ body {
 .transparent-button:hover {
   color: white;
 }
+.transparent-button.active {
+  background-color: #bdae82;
+  color: black;
+}
 .portfolio-imgs {
   display: flex;
   justify-content: center;
