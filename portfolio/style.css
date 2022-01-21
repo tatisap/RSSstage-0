@@ -107,15 +107,17 @@ body {
   padding-left: 8px;
 }
 .lng-en,
-.lng-ru,
-.lng:visited {
+.lng-ru {
   color: white;
   text-decoration: none;
   line-height: 50px;
+  cursor: pointer;
   transition: 0.3s;
 }
 .lng-en:hover,
-.lng-ru:hover {
+.lng-ru:hover,
+.lng-en.active,
+.lng-ru.active {
   color: #bdae82;
 }
 
@@ -678,6 +680,7 @@ body {
   }
   .hero-text {
     width: 260px;
+    margin-bottom: 100px;
   }
   .portfolio-img {
     width: 300px;
