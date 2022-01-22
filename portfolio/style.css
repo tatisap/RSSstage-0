@@ -666,6 +666,10 @@ body {
 
 /* adaptive 480px */
 @media (max-width: 480px) {
+  .header-container,
+  .hero-container {
+    padding-left: 40px;
+  }
   .hamburger {
     margin-right: 0;
   }

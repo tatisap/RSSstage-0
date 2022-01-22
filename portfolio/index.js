@@ -21,7 +21,7 @@ function closeMenu() {
     hamburgerButton.classList.remove('is-active');
     nav.classList.remove('is-active');
     navList.classList.remove('is-active');  
-    blackout.classList.toggle('blackout');
+    blackout.classList.remove('blackout');
   }
 }
 nav.addEventListener('click', closeMenu);
