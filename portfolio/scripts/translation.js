@@ -84,15 +84,32 @@ export function translate () {
 
   const lngsParent = document.querySelector('.switch-lng');
   const lngs = document.querySelectorAll('[data-lng]');
+  let currentLanguage = localStorage.getItem('lang');
 
   lngsParent.addEventListener('click', () => {
     lngs.forEach( (lng) => lng.classList.remove('active') );
     event.target.classList.add('active');
     getTranslate(event.target.dataset.lng);
+    currentLanguage = event.target.dataset.lng;
   });
 
   function getTranslate(lng) {
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(element => element.textContent = i18Obj[lng][element.dataset.i18n]);
   }
+
+  function setLocalStorage() {
+    localStorage.setItem('lang', currentLanguage);
+  }
+  window.addEventListener('beforeunload', setLocalStorage);
+
+  function getLocalStorage() {
+    if(localStorage.getItem('lang')) {
+      const lang = localStorage.getItem('lang');
+      getTranslate(lang);
+    }
+  }
+  window.addEventListener('load', getLocalStorage);
 }
+
+

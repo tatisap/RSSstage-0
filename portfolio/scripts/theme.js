@@ -10,11 +10,27 @@ export function theme () {
 
   const switcher = document.querySelector('.theme-switcher');
 
+  let isLight = false;
+
+
   switcher.addEventListener('click', changeTheme);
 
   function changeTheme() {
     variableElements.forEach(elem => {
         elem.classList.toggle('light-theme');
     });
+    isLight = document.querySelector('body').classList.contains('light-theme');
   }
+
+  function setLocalStorage() {
+    (isLight) ? localStorage.setItem('theme', 'light') : localStorage.setItem('theme', 'dark');
+  }
+  window.addEventListener('beforeunload', setLocalStorage);
+
+  function getLocalStorage() {
+    if(localStorage.getItem('theme') === 'light') {
+      changeTheme();
+    }
+  }
+  window.addEventListener('load', getLocalStorage);
 }
