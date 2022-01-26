@@ -524,6 +524,12 @@ button .circle {
 
 /* adaptive 960px */
 @media (max-width: 960px) {
+  .nav-list {
+    padding-right: 15px;
+  }
+  .lng-ru{
+    padding-right: 10px;
+  }
   .skills-items {
     gap: 0;
     row-gap: 36px;
@@ -565,6 +571,7 @@ button .circle {
   }
   .contacts-title {
     margin-top: 60px;
+    text-align: center;
     font-size: 32px;
     line-height: 64px;
   }
@@ -723,6 +730,12 @@ button .circle {
 
 /* adaptive 480px */
 @media (max-width: 480px) {
+  .switch-lng{
+    padding-right: 10px;
+  }
+  .theme-switcher{
+    margin-right: 10px;
+  }
   .hamburger {
     margin-right: 0;
   }
@@ -746,8 +759,8 @@ button .circle {
 }
 
 
-/* adaptive 320px */
-@media (max-width: 320px) {
+/* adaptive 340px */
+@media (max-width: 340px) {
   .header-container,
   .hero-container {
     padding-left: 20px;
