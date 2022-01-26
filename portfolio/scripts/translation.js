@@ -107,6 +107,7 @@ export function translate () {
     if(localStorage.getItem('lang')) {
       const lang = localStorage.getItem('lang');
       getTranslate(lang);
+      lngs.forEach( (lng) => (lng.dataset.lng === lang) ? lng.classList.add('active') : lng.classList.remove('active') );
     }
   }
   window.addEventListener('load', getLocalStorage);
