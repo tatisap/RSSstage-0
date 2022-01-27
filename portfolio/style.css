@@ -84,7 +84,7 @@ body {
   align-items: center;
   gap: 31px;
   margin: 0;
-  padding-right: 35px;
+  padding-right: 38px;
   padding-left: 0px;
   list-style: none;
 }
@@ -101,7 +101,7 @@ body {
   font-weight: 700;
 }
 .lng-en {
-  padding-right: 10px;
+  padding-right: 13px;
 }
 .lng-ru{
   padding-left: 11px;
@@ -603,7 +603,7 @@ button .circle {
     padding-right: 30px;
   }
   .lng-ru{
-    padding-left: 18px;
+    padding-left: 11px;
     padding-right: 0;
   }
   .theme-switcher {

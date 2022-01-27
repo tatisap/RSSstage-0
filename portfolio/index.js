@@ -1,20 +1,20 @@
 import { showSelfTest } from './scripts/self-test.js';
-import { initMenu } from './scripts/menu.js';
-import { changeSeason } from './scripts/portfolio.js';
-import { translate } from './scripts/translation.js';
-import { theme } from './scripts/theme.js';
-import { initButtonsEffect } from './scripts/buttons.js'
+import { initAdaptiveMenu } from './scripts/menu.js';
+import { initChangingSeason } from './scripts/portfolio.js';
+import { initTranslation } from './scripts/translation.js';
+import { initChangingTheme } from './scripts/theme.js';
+import { initButtonsEffects } from './scripts/buttons.js'
 
 showSelfTest();
 
-initMenu();
+initAdaptiveMenu();
 
-changeSeason();
+initChangingSeason();
 
-translate();
+initTranslation();        
 
-theme();
+initChangingTheme();
 
-initButtonsEffect();
+initButtonsEffects();
 
 document.querySelector('body').style.display = 'flex';

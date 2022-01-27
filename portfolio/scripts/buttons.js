@@ -1,24 +1,26 @@
-export function initButtonsEffect() {
+export function initButtonsEffects() {
   const buttons = document.querySelectorAll('.hire-button, .transparent-button, .order-button, .send-button');
 
-  buttons.forEach(button => button.addEventListener('click', function (e) {
-    const x = e.clientX;
-    const y = e.clientY;
+  buttons.forEach(button => button.addEventListener('click', getCircleEffect));
+}
 
-    const coords = button.getBoundingClientRect();
-    const buttonTop = coords.y;
-    const buttonLeft = coords.x;
+function getCircleEffect(event) {
+  const x = event.clientX;
+  const y = event.clientY;
 
-    const xInside = x - buttonLeft;
-    const yInside = y - buttonTop;
+  const buttonCoords = event.target.getBoundingClientRect();
+  const buttonTop = buttonCoords.y;
+  const buttonLeft = buttonCoords.x;
 
-    const circle = document.createElement('span');
-    circle.classList.add('circle');
-    circle.style.top = yInside + 'px';
-    circle.style.left = xInside + 'px';
+  const xInside = x - buttonLeft;
+  const yInside = y - buttonTop;
 
-    button.appendChild(circle);
+  const circle = document.createElement('span');
+  circle.classList.add('circle');
+  circle.style.top = yInside + 'px';
+  circle.style.left = xInside + 'px';
 
-    setTimeout(() => circle.remove(), 500);
-  }));
+  event.target.appendChild(circle);
+
+  setTimeout(() => circle.remove(), 500);
 }
