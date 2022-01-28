@@ -95,7 +95,7 @@ const i18Obj = {
 const languagesParent = document.querySelector('.switch-lng');
 const languages = document.querySelectorAll('[data-lng]');
 
-let currentLanguage = localStorage.getItem('lang');
+let currentLanguage = (localStorage.getItem('lang') === null ) ? languagesParent.querySelector('.active').dataset.lng : localStorage.getItem('lang');
 
 export function initTranslation () {
   languagesParent.addEventListener('click', translate);
