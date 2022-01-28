@@ -13,3 +13,10 @@ function changeSeason(event) {
     portfolioImages.forEach( (img, index) => img.src = `./assets/img/portfolio-imgs/${event.target.dataset.season}/portfolio-img-${index}.jpg` );
   }
 }
+
+export function preloadImages(season) {
+  for(let i = 0; i <= 5; i++) {
+    const img = new Image();
+    img.src = `./assets/img/portfolio-imgs/${season}/portfolio-img-${i}.jpg`;
+  }
+}
