@@ -20,6 +20,9 @@ const i18Obj = {
     'spring': 'Spring',
     'summer': 'Summer',
     'autumn': 'Autumn',
+    'price-title-1': 'Standard',
+    'price-title-2': 'Premium',
+    'price-title-3': 'Gold',
     'price-desc-1-span-1': 'One location',
     'price-desc-1-span-2': '120 photos in color',
     'price-desc-1-span-3': '12 photos in retouch',
@@ -37,6 +40,9 @@ const i18Obj = {
     'price-desc-3-span-5': 'Make up, visage, hairstyle',
     'order': 'Order shooting',
     'contact-me': 'Contact me',
+    'email': 'E-mail',
+    'phone': 'Phone',
+    'message': 'Message',
     'send-message': 'Send message'
   },
   'ru': {
@@ -60,6 +66,9 @@ const i18Obj = {
     'spring': 'Весна',
     'summer': 'Лето',
     'autumn': 'Осень',
+    'price-title-1': 'Стандарт',
+    'price-title-2': 'Премиум',
+    'price-title-3': 'Голд',
     'price-desc-1-span-1': 'Одна локация',
     'price-desc-1-span-2': '120 цветных фото',
     'price-desc-1-span-3': '12 отретушированных фото',
@@ -77,6 +86,9 @@ const i18Obj = {
     'price-desc-3-span-5': 'Макияж, визаж, прическа',
     'order': 'Заказать съемку',
     'contact-me': 'Свяжитесь со мной',
+    'email': 'Электронная почта',
+    'phone': 'Телефон',
+    'message': 'Сообщение',
     'send-message': 'Отправить'
   }
 }
@@ -100,7 +112,9 @@ function translate(event) {
 
 function getTranslation(lng) {
   const elements = document.querySelectorAll('[data-i18n]');
-  elements.forEach(element => element.textContent = i18Obj[lng][element.dataset.i18n]);
+  elements.forEach(element => {
+    (element.placeholder) ? element.placeholder = i18Obj[lng][element.dataset.i18n] : element.textContent = i18Obj[lng][element.dataset.i18n]
+  });
 }
 
 function setLocalStorage() {
