@@ -274,11 +274,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-.video-bg {
+.video {
   width: 100%;
-}
-.video-bg-minor {
-  display: none;
 }
 .play-button {
   position: absolute;
@@ -671,14 +668,6 @@ button .circle {
   }
   .section-title-text {
     font-size: 32px;
-  }
-  .video-bg {
-    display: none;
-  }
-  .video-bg-minor {
-    display: block;
-    width: 100%;
-    padding-top: 6px;
   }
   .play-button {
     width: 65px;
