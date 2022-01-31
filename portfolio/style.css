@@ -294,6 +294,9 @@ body {
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
+.play-button.video-in-progress {
+  display: none;
+}
 .controls {
   position: absolute;
   bottom: -70px;
@@ -325,6 +328,9 @@ body {
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
+.play.video-in-progress {
+  background-image: url('./assets/svg/pause.svg');
+}
 .progress-bar {
   flex: 1;
   height: 7px;
@@ -349,6 +355,9 @@ body {
 .volume-status:hover {
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
+}
+.volume-status.muted {
+  background-image: url('./assets/svg/mute.svg');
 }
 .volume-slider {
   width: 140px;
