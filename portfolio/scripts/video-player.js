@@ -1,6 +1,6 @@
 export function video() {
   const video = document.querySelector('.video');
-  const playButtons = document.querySelectorAll('.play, .play-button');
+  const playButtons = document.querySelectorAll('.play-pause-button, .play-button');
   const volumeStatus = document.querySelector('.volume-status');
 
   let lastVolume = 1;
