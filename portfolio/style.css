@@ -319,14 +319,14 @@ body {
 }
 .player-slider {
   margin: 0;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #bdae82 0%, #bdae82 0%, #b3b3bb 0%, #b3b3bb 100%);
   appearance: none;
-  background-color: transparent;
 }
 .player-slider::-webkit-slider-runnable-track {
   height: 10px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(to right, #bdae82 50%, #b3b3bb 50%);
 }
 .player-slider::-webkit-slider-thumb {
   width: 16px;
@@ -336,7 +336,6 @@ body {
   background-color: white;
   cursor: pointer;
   appearance: none;
-  box-shadow: -100%  0 0 100%  #bdae82;
 }
 #progress-slider {
   flex: 1;
