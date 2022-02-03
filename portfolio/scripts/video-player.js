@@ -36,11 +36,16 @@ export function video() {
   video.addEventListener('ended', pauseVideo);
 
   function toggleMute() {
+    if (lastVolume === 0) lastVolume = 0.5;
     if (video.volume) {
       video.volume = 0;
+      volumeBar.value = 0;
+      volumeBar.style.backgroundImage = `linear-gradient(to right, #bdae82 0%, #bdae82 0%, #b3b3bb 0%, #b3b3bb 100%)`;
       volumeStatus.classList.add('muted');
     } else {
       video.volume = lastVolume;
+      volumeBar.value = lastVolume * 100;
+      volumeBar.style.backgroundImage = `linear-gradient(to right, #bdae82 ${Math.round(volumeBar.value)}%, #bdae82 0%, #b3b3bb 0%, #b3b3bb ${100 - (Math.round(volumeBar.value))}%)`;
       volumeStatus.classList.remove('muted');
     }
   }
@@ -82,6 +87,11 @@ export function video() {
     lastVolume = video.volume;
     volumeBar.style.backgroundImage = `linear-gradient(to right, #bdae82 ${Math.round(volumeBar.value)}%, #bdae82 0%, #b3b3bb 0%, #b3b3bb ${100 - (Math.round(volumeBar.value))}%)`;
   }
+  function toggleVolumeButton() {
+    (volumeBar.value === '0') ? volumeStatus.classList.add('muted') :
+    volumeStatus.classList.remove('muted');
+  }
 
   volumeBar.addEventListener('input', changeVolume);
+  volumeBar.addEventListener('change', toggleVolumeButton);
 }
