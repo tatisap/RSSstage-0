@@ -1,4 +1,5 @@
 export function video() {
+  const player = document.querySelector('.video-player');
   const video = document.querySelector('.video');
   const controls = document.querySelector('.controls');
   const playButtons = document.querySelectorAll('.play-pause-button, .play-button');
@@ -9,11 +10,14 @@ export function video() {
   const totalSeconds = document.querySelector('.total-time').lastElementChild;
   const currentMinutes = document.querySelector('.current-time').firstElementChild;
   const currentSeconds = document.querySelector('.current-time').lastElementChild;
+  const fullScreenButton = document.querySelector('.full-screen');
 
   let lastVolume = 0.5;
   video.volume = lastVolume;
 
   let isFirstPlaying = true;
+
+  let fullscreen = false;
 
   function toggleVideo() {
     (video.paused) ? playVideo() : pauseVideo();
@@ -106,4 +110,23 @@ export function video() {
 
   volumeBar.addEventListener('input', changeVolume);
   volumeBar.addEventListener('change', toggleVolumeButton);
+
+  function toggleFullscreen() {
+    (fullscreen) ? exitFullscreen() : launchIntoFullscreen(player);
+  }
+
+  function launchIntoFullscreen(elem) {
+    if(elem.requestFullscreen) elem.requestFullscreen();
+  }
+
+  function exitFullscreen() {
+  if(document.exitFullscreen) document.exitFullscreen();
+  }
+
+  fullScreenButton.addEventListener('click', toggleFullscreen);
+  player.addEventListener('fullscreenchange', changeFullscreenConst);
+
+  function changeFullscreenConst() {
+    fullscreen = !fullscreen;
+  }
 }

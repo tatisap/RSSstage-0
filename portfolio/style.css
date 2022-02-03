@@ -397,6 +397,21 @@ body {
 .volume-status.muted {
   background-image: url('./assets/svg/mute.svg');
 }
+.full-screen {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  background-image: url('./assets/svg/fullscreen.svg');
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.full-screen:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+}
 .prices-items {
   display: flex;
   justify-content: center;
@@ -855,6 +870,11 @@ button .circle {
     height: 20px;
   }
   .volume-status {
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+  }
+  .full-screen {
     width: 20px;
     height: 20px;
     background-size: 20px 20px;
