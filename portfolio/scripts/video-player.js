@@ -65,7 +65,7 @@ export function video() {
 
   function updateTime(time) {
     currentMinutes.textContent = (time < 60) ? 0 : Math.floor(time / 60);
-    currentSeconds.textContent = (time < 10) ? `0${Math.ceil(time % 60)}` : Math.ceil(time % 60);
+    currentSeconds.textContent = (time <= 9) ? `0${Math.ceil(time % 60)}` : Math.ceil(time % 60);
   }
 
   video.addEventListener('timeupdate', updateProgress);
