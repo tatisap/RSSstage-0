@@ -361,6 +361,7 @@ body {
 }
 .play-pause-button.video-in-progress {
   background-image: url('./assets/svg/pause.svg');
+  transform: rotate(180deg);
 }
 .time {
   display: flex;
@@ -816,6 +817,47 @@ button .circle {
   .nav-list {
     align-items: center;
     padding-right: 0;
+  }
+  .controls {
+    bottom: -60px;
+    gap: 10px;
+    height: 40px;
+    padding: 0 10px;
+  }
+  .player-slider::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 7px;
+  }
+  .player-slider::-webkit-slider-thumb {
+    width: 10px;
+    height: 10px;
+    margin-top: -2px;
+    border-radius: 10px;
+  }
+  #volume-slider {
+    width: 60px;
+  }
+  .play-pause-button {
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+  }
+  .time {
+    position: absolute;
+    right: 0;
+    bottom: 40px;
+    width: 70px;
+    font-size: 14px;
+  }
+  .volume {
+    gap: 5px;
+    width: 90px;
+    height: 20px;
+  }
+  .volume-status {
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
   }
 }
 

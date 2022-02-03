@@ -15,10 +15,6 @@ export function video() {
 
   let isFirstPlaying = true;
 
-  totalMinutes.textContent = (video.duration < 60) ? 0 : Math.floor(video.duration / 60);
-  totalSeconds.textContent = (video.duration < 60) ? Math.floor(video.duration) : Math.floor(video.duration % 60);
-
-
   function toggleVideo() {
     (video.paused) ? playVideo() : pauseVideo();
   }
@@ -27,6 +23,8 @@ export function video() {
     if (isFirstPlaying) {
       isFirstPlaying = false;
       controls.style.display = 'flex';
+      totalMinutes.textContent = (video.duration < 60) ? 0 : Math.floor(video.duration / 60);
+      totalSeconds.textContent = (video.duration < 60) ? Math.ceil(video.duration) : Math.ceil(video.duration % 60);
     }
     video.play();
     playButtons.forEach(button => button.classList.add('video-in-progress'));
@@ -67,7 +65,7 @@ export function video() {
 
   function updateTime(time) {
     currentMinutes.textContent = (time < 60) ? 0 : Math.floor(time / 60);
-    currentSeconds.textContent = (time < 10) ? `0${Math.floor(time % 60)}` : Math.floor(time % 60);
+    currentSeconds.textContent = (time < 10) ? `0${Math.ceil(time % 60)}` : Math.ceil(time % 60);
   }
 
   video.addEventListener('timeupdate', updateProgress);
