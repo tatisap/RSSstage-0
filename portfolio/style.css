@@ -300,7 +300,7 @@ body {
 .controls {
   position: absolute;
   bottom: -70px;
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
@@ -320,7 +320,6 @@ body {
 .player-slider {
   margin: 0;
   border-radius: 10px;
-  background-image: linear-gradient(to right, #bdae82 0%, #bdae82 0%, #b3b3bb 0%, #b3b3bb 100%);
   appearance: none;
 }
 .player-slider::-webkit-slider-runnable-track {
@@ -339,9 +338,11 @@ body {
 }
 #progress-slider {
   flex: 1;
+  background-image: linear-gradient(to right, #bdae82 0%, #bdae82 0%, #b3b3bb 0%, #b3b3bb 100%);
 }
 #volume-slider {
   width: 140px;
+  background-image: linear-gradient(to right, #bdae82 50%, #bdae82 0%, #b3b3bb 0%, #b3b3bb 50%);
 }
 .play-pause-button {
   width: 40px;
