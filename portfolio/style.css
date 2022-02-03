@@ -362,6 +362,14 @@ body {
 .play-pause-button.video-in-progress {
   background-image: url('./assets/svg/pause.svg');
 }
+.time {
+  display: flex;
+  width: 95px;
+}
+.current-time,
+.total-time {
+  width: 46%;
+}
 .volume {
   display: flex;
   justify-content: space-between;

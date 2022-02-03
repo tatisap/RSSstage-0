@@ -5,11 +5,18 @@ export function video() {
   const volumeStatus = document.querySelector('.volume-status');
   const progressBar = document.querySelector('#progress-slider');
   const volumeBar = document.querySelector('#volume-slider');
+  const totalMinutes = document.querySelector('.total-time').firstElementChild;
+  const totalSeconds = document.querySelector('.total-time').lastElementChild;
+  const currentMinutes = document.querySelector('.current-time').firstElementChild;
+  const currentSeconds = document.querySelector('.current-time').lastElementChild;
 
   let lastVolume = 0.5;
   video.volume = lastVolume;
 
   let isFirstPlaying = true;
+
+  totalMinutes.textContent = (video.duration < 60) ? 0 : Math.floor(video.duration / 60);
+  totalSeconds.textContent = (video.duration < 60) ? Math.floor(video.duration) : Math.floor(video.duration % 60);
 
 
   function toggleVideo() {
@@ -55,6 +62,12 @@ export function video() {
   function updateProgress() {
     progressBar.value = `${Math.round(video.currentTime / video.duration * 100)}`;
     progressBar.style.backgroundImage = `linear-gradient(to right, #bdae82 ${Math.round(video.currentTime / video.duration * 100)}%, #bdae82 0%, #b3b3bb 0%, #b3b3bb ${100 - (Math.round(video.currentTime / video.duration * 100))}%)`;
+    updateTime(video.currentTime);
+  }
+
+  function updateTime(time) {
+    currentMinutes.textContent = (time < 60) ? 0 : Math.floor(time / 60);
+    currentSeconds.textContent = (time < 10) ? `0${Math.floor(time % 60)}` : Math.floor(time % 60);
   }
 
   video.addEventListener('timeupdate', updateProgress);
@@ -63,6 +76,7 @@ export function video() {
   function onMouseMove() {
     video.currentTime =  progressBar.value * video.duration / 100;
     progressBar.style.backgroundImage = `linear-gradient(to right, #bdae82 ${Math.round(progressBar.value)}%, #bdae82 0%, #b3b3bb 0%, #b3b3bb ${100 - (Math.round(progressBar.value))}%)`;
+    updateTime(video.currentTime);
   }
   progressBar.addEventListener('input', onMouseMove);
 
