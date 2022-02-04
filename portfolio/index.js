@@ -26,3 +26,12 @@ document.querySelector('body').style.display = 'flex';
 const seasons = ['winter', 'spring', 'summer', 'autumn'];
 
 seasons.forEach(season => preloadImages(season));
+
+const videoControlsIcons = ['fullscreen', 'mute', 'pause', 'play_speed', 'play', 'volume'];
+
+videoControlsIcons.forEach(icon => preloadIcon(icon));
+
+function preloadIcon(iconName) {
+  const icon = new Image();
+  icon.src = `./assets/svg/${iconName}.svg`;
+}
