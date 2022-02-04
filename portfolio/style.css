@@ -299,7 +299,7 @@ body {
 }
 .controls {
   position: absolute;
-  bottom: -70px;
+  bottom: -130px;
   display: none;
   justify-content: space-between;
   align-items: center;
@@ -396,6 +396,57 @@ body {
 }
 .volume-status.muted {
   background-image: url('./assets/svg/mute.svg');
+}
+.play-speed {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  background-image: url('./assets/svg/play_speed.svg');
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.play-speed:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+}
+.speed {
+  display: none;
+  position: absolute;
+  right: 5px;
+  bottom: 70px;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #b3b3b3;
+}
+.speed.open {
+  display: block;
+}
+.speed-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+} 
+.speed-item button {
+  width: 60px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  background-color: #b3b3b3;
+  cursor: pointer;
+  font: inherit;
+  transition: 0.3s;
+}
+.speed-item button:hover, 
+.speed-item .active {
+  background-color: #bdae82;
+  color: white;
 }
 .full-screen {
   width: 40px;
@@ -870,6 +921,11 @@ button .circle {
     height: 20px;
   }
   .volume-status {
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+  }
+  .play-speed {
     width: 20px;
     height: 20px;
     background-size: 20px 20px;

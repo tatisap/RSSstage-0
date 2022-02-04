@@ -11,6 +11,9 @@ export function video() {
   const currentMinutes = document.querySelector('.current-time').firstElementChild;
   const currentSeconds = document.querySelector('.current-time').lastElementChild;
   const fullScreenButton = document.querySelector('.full-screen');
+  const speedsList = document.querySelector('.speed');
+  const speedButton = document.querySelector('.play-speed');
+  const speeds = document.querySelectorAll('.speed-item button');
 
   let lastVolume = 0.5;
   video.volume = lastVolume;
@@ -129,4 +132,14 @@ export function video() {
   function changeFullscreenConst() {
     fullscreen = !fullscreen;
   }
+
+  speedButton.addEventListener('click', () => speedsList.classList.toggle('open'));
+
+  function setSpeed(event) {
+    video.playbackRate = event.target.dataset.speed;
+    speeds.forEach(speed => speed.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  speeds.forEach(speed => speed.addEventListener('click', setSpeed));
 }
