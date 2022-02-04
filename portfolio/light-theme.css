@@ -75,13 +75,6 @@ body.light-theme {
   background-color: #1c1c1c;
   color: #bdae82;
 }
-.play-button.light-theme {
-  filter: invert(95%) sepia(0%) saturate(1661%) hue-rotate(149deg) brightness(114%) contrast(88%);
-}
-.play-button.light-theme:hover {
-  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
-    contrast(87%);
-}
 .price.light-theme {
   color: #1c1c1c;
 }
@@ -105,6 +98,9 @@ body.light-theme {
 }
 .footer-link.light-theme:hover {
   color: #bdae82;
+}
+.rs-link-wrapper.light-theme {
+  filter: invert(0%);
 }
 .social-media-item.light-theme {
   filter: invert(95%) sepia(0%) saturate(1661%) hue-rotate(149deg) brightness(114%) contrast(88%);

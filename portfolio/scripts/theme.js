@@ -4,7 +4,7 @@ const variableElementsSelectors = 'body, .header-container, ' +
   '.transparent-button, .play-button, .price, .contacts-container, ' +
   '.contacts-title, .contact-form, .message-form, .footer-link, ' +
   '.social-media-item, .nav, .hero-container, .section-title-text, ' +
-  '.order-button'; 
+  '.order-button, .rs-link-wrapper'; 
 const variableElements = document.querySelectorAll(variableElementsSelectors);
 const switcher = document.querySelector('.theme-switcher');
 
