@@ -5,7 +5,7 @@ import { preloadImages } from './scripts/portfolio.js';
 import { initTranslation } from './scripts/translation.js';
 import { initChangingTheme } from './scripts/theme.js';
 import { initButtonsEffects } from './scripts/buttons.js'
-import { video } from './scripts/video-player.js'
+import { initVideoPlayer } from './scripts/video-player.js'
 
 showSelfTest();
 
@@ -19,7 +19,7 @@ initChangingTheme();
 
 initButtonsEffects();
 
-video();
+initVideoPlayer();
 
 document.querySelector('body').style.display = 'flex';
 
