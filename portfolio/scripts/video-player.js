@@ -88,6 +88,7 @@ function onMouseDown(event) {
 }
 
 function changeVolume() {
+  toggleVolumeButton();
   video.volume = volumeBar.value / 100;
   lastVolume = video.volume;
   volumeBar.style.backgroundImage = `linear-gradient(to right, #bdae82 ${Math.round(volumeBar.value)}%, #bdae82 0%, #b3b3bb 0%, #b3b3bb ${100 - (Math.round(volumeBar.value))}%)`;
