@@ -457,9 +457,11 @@ body {
   background-size: 40px 40px;
   background-repeat: no-repeat;
   cursor: pointer;
+  transform: scale(0.9);
   transition: 0.3s;
 }
 .full-screen:hover {
+  transform: scale(1.0);
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
 }
@@ -888,7 +890,7 @@ button .circle {
     bottom: -60px;
     gap: 10px;
     height: 40px;
-    padding: 0 10px;
+    padding: 0 8px;
   }
   .player-slider::-webkit-slider-runnable-track {
     height: 6px;
@@ -901,7 +903,7 @@ button .circle {
     border-radius: 10px;
   }
   #volume-slider {
-    width: 60px;
+    width: 50px;
   }
   .play-pause-button {
     width: 20px;
@@ -917,7 +919,7 @@ button .circle {
   }
   .volume {
     gap: 5px;
-    width: 90px;
+    width: 75px;
     height: 20px;
   }
   .volume-status {
@@ -929,6 +931,19 @@ button .circle {
     width: 20px;
     height: 20px;
     background-size: 20px 20px;
+  }
+  .speed {
+    right: 3px;
+    bottom: 40px;
+    z-index: 100;
+    padding: 5px;
+  }
+  .speed-item button {
+    width: 30px;
+    height: 25px;
+    border-radius: 5px;
+    padding: 0;
+    font-size: 12px;
   }
   .full-screen {
     width: 20px;

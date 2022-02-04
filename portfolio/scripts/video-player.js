@@ -139,6 +139,7 @@ export function video() {
     video.playbackRate = event.target.dataset.speed;
     speeds.forEach(speed => speed.classList.remove('active'));
     event.target.classList.add('active');
+    speedsList.classList.remove('open');
   }
 
   speeds.forEach(speed => speed.addEventListener('click', setSpeed));
