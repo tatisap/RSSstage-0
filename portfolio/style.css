@@ -366,6 +366,7 @@ body {
 .time {
   display: flex;
   width: 95px;
+  color: white;
 }
 .current-time,
 .total-time {
@@ -887,7 +888,6 @@ button .circle {
     padding-right: 0;
   }
   .controls {
-    bottom: -60px;
     gap: 10px;
     height: 40px;
     padding: 0 8px;
