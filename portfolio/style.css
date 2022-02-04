@@ -573,9 +573,6 @@ body {
 .footer-data span {
   margin-right: 20px;
 }
-.footer-text {
-  margin: 0;
-}
 .footer-link,
 .footer-link:visited {
   color: white;
@@ -584,6 +581,24 @@ body {
 }
 .footer-link:hover {
   color: #bdae82;
+}
+.rs-link-wrapper {
+  width: 114px;
+  height: 58px;
+  background-image: url('./assets/svg/rs_school_js.svg');
+  background-size: 94px 38px;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: invert(100%);
+  transition: 0.3s;
+}
+.rs-link-wrapper:hover {
+  transform: scale(1.1);
+}
+.rs-link {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .social-media-list {
   display: flex;
