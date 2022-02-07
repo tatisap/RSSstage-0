@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'Quicksand';
+  src: url(./assets/fonts/Quicksand-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Quicksand';
+  src: url(./assets/fonts/Quicksand-Bold.ttf);
+  font-weight: 700;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth; 
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  background-color: #1c1c1c;
+  color: white;
+  font-family: 'Quicksand';
+  font-weight: 700;
+  font-size: 20px;
+}
+.main {
+  height: 100%;
+}
+.header-container,
+.main-container,
+.footer-container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.header-container,
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 30px;
+}
+.header-title {
+  margin: 0;
+  color: #ff7a40;
+}
+.search {
+  width: 300px;
+  height: 40px;
+  padding: 0;
+  padding-left: 15px;
+  border: #ff7a40 1px solid;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255, 0.15);
+  color: white;
+  font-family: 'Quicksand';
+  font-size: 24px;
+  font-weight: 300;
+}
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 0 10px;
+}
+.movie-card {
+  max-width: 320px;
+  height: 600px;
+  padding: 10px;
+  box-shadow: 3px 2px 54px 0px rgba(0,0,0,0.75);
+}
+.movie-poster {
+  width: 300px;
+  height: 450px;
+  margin-bottom: 10px;
+}
+.movie-info {
+  display: flex;
+  justify-content: space-between;
+}
+.movie-title {
+  flex: 1;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 300;
+}
+.movie-rating {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  padding: 5px;
+  background-color: #ff7a40;
+  font-size: 22px;
+  text-align: center;
+}
+.left-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.github-link,
+.github-link:visited {
+  color: white;
+  text-decoration: none;
+}
+.github-link:hover {
+  color: #ff7a40;
+}
+.rs-link {
+  width: 104px;
+  height: 48px;
+  border-radius: 10px;
+  background-color: white;
+  background-image: url('./assets/svg/rs_school_js.svg');
+  background-size: 94px 38px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+}
+.rs-link:hover {
+  transform: scale(1.1);
+}
+.rs-link a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container,
+  .footer-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .header-title {
+    text-align: center;
+  }
+}
