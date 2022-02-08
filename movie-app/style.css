@@ -48,14 +48,14 @@ body {
 }
 .header-title {
   margin: 0;
-  color: #ff7a40;
+  color: #f7ea74;
 }
 .search {
   width: 300px;
   height: 40px;
   padding: 0;
   padding-left: 15px;
-  border: #ff7a40 1px solid;
+  border: #f7ea74 1px solid;
   border-radius: 20px;
   background-color: rgb(255, 255, 255, 0.15);
   color: white;
@@ -76,14 +76,23 @@ body {
   padding: 10px;
   box-shadow: 3px 2px 54px 0px rgba(0,0,0,0.75);
 }
-.movie-poster {
+.movie-poster-wrapper {
   width: 300px;
   height: 450px;
   margin-bottom: 10px;
+  background-image: url('./assets/svg/no-poster.svg');
+  background-size: 150px 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.movie-poster {
+  width: 100%;
+  height: 100%;
 }
 .movie-info {
   display: flex;
   justify-content: space-between;
+  gap: 5px;
 }
 .movie-title {
   flex: 1;
@@ -96,7 +105,8 @@ body {
   height: 40px;
   border-radius: 20px;
   padding: 5px;
-  background-color: #ff7a40;
+  background-color: #f7ea74;
+  color: #1c1c1c;
   font-size: 22px;
   text-align: center;
 }
@@ -112,7 +122,7 @@ body {
   text-decoration: none;
 }
 .github-link:hover {
-  color: #ff7a40;
+  color: #f7ea74;
 }
 .rs-link {
   width: 104px;
