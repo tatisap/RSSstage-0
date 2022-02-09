@@ -75,6 +75,11 @@ function addRatings(data) {
   const ratings = document.querySelectorAll('.movie-rating');
   for (let i = 0; i < ratings.length; i++) { 
     ratings[i].textContent = data.results[i].vote_average;
+
+    (data.results[i].vote_average >= 7) ? ratings[i].classList.add('green-rating') :
+    (data.results[i].vote_average < 7 && data.results[i].vote_average >= 5) ? ratings[i].classList.add('orange-rating') :
+    ratings[i].classList.add('red-rating');
+
   }
 }
 

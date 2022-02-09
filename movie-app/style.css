@@ -145,10 +145,18 @@ body {
   height: 40px;
   border-radius: 20px;
   padding: 5px;
-  background-color: #f7ea74;
   color: #1c1c1c;
   font-size: 22px;
   text-align: center;
+}
+.movie-rating.green-rating {
+  background-color: #a4f774;
+}
+.movie-rating.orange-rating {
+  background-color: #f7ab74;
+}
+.movie-rating.red-rating {
+  background-color: #f77d74;
 }
 .show-overview {
   position: absolute;
