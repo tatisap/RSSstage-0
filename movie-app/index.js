@@ -14,6 +14,7 @@ async function getPopularMovies() {
   addPosters(popularMoviesData, configData);
   addTitles(popularMoviesData);
   addRatings(popularMoviesData);
+  addOverviews(popularMoviesData);
 }
 
 async function getDataByQuery(event) {
@@ -39,6 +40,7 @@ async function getDataByQuery(event) {
     addPosters(foundMoviesData, configData);
     addTitles(foundMoviesData);
     addRatings(foundMoviesData);
+    addOverviews(foundMoviesData);
   }
 }
 
@@ -76,6 +78,13 @@ function addRatings(data) {
   }
 }
 
+function addOverviews(data) {
+  const overviews = document.querySelectorAll('.movie-overview');
+  for (let i = 0; i < overviews.length; i++) { 
+    overviews[i].textContent = data.results[i].overview;
+  }
+}
+
 function createNewMovieCard() {
   let card = document.createElement('div');
   card.classList.add('movie-card');
@@ -85,9 +94,15 @@ function createNewMovieCard() {
 
   let info = document.createElement('div');
   info.classList.add('movie-info');
+
+  let showButton = document.createElement('button');
+  showButton.classList.add('show-overview');
+  showButton.textContent = 'Show overview';
+  showButton.addEventListener('click', switchOverview);
   
   card.append(posterWrapper);
   card.append(info);
+  card.append(showButton);
 
   let poster = document.createElement('img');
   poster.classList.add('movie-poster');
@@ -100,10 +115,20 @@ function createNewMovieCard() {
   let rating = document.createElement('div');
   rating.classList.add('movie-rating');
 
+  let overview = document.createElement('div');
+  overview.classList.add('movie-overview');
+
   info.append(title);
   info.append(rating);
+  info.append(overview);
 
   return card;
+}
+
+function switchOverview(event) {
+  let overview = event.target.parentElement.querySelector('.movie-overview');
+  overview.classList.toggle('open');
+  event.target.textContent = (event.target.textContent === 'Show overview') ? 'Close overview' : 'Show overview';
 }
 
 function addNoResultsElement() {

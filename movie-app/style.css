@@ -109,10 +109,12 @@ body {
   margin: auto;
 }
 .movie-card {
+  position: relative;
   max-width: 320px;
   height: 600px;
   padding: 10px;
   box-shadow: 3px 2px 54px 0px rgba(0,0,0,0.75);
+  overflow: hidden;
 }
 .movie-poster-wrapper {
   width: 300px;
@@ -147,6 +149,35 @@ body {
   color: #1c1c1c;
   font-size: 22px;
   text-align: center;
+}
+.show-overview {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 320px;
+  height: 30px;
+  border: 0;
+  background-color: #f7ea74;
+  font: inherit;
+  font-weight: 300;
+  cursor: pointer;
+}
+.movie-overview {
+  position: absolute;
+  top: 600px;
+  left: 0px;
+  width: 320px;
+  height: 600px;
+  padding: 20px;
+  padding-bottom: 50px;
+  line-height: 30px;
+  background-color: #1c1c1c;
+  font-weight: 300;
+  transition: 0.5s;
+  overflow: scroll;
+}
+.movie-overview.open {
+  top: 0px;
 }
 .left-side {
   display: flex;
