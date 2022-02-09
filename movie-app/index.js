@@ -20,6 +20,11 @@ async function getPopularMovies() {
 async function getDataByQuery(event) {
   event.preventDefault();
 
+  if (event.target.query.value ==='') {
+    switchMessage(event);
+    return;
+  }
+
   mainContainer.innerHTML = '';
   document.body.classList.remove('all-height');
 
@@ -79,7 +84,6 @@ function addRatings(data) {
     (data.results[i].vote_average >= 7) ? ratings[i].classList.add('green-rating') :
     (data.results[i].vote_average < 7 && data.results[i].vote_average >= 5) ? ratings[i].classList.add('orange-rating') :
     ratings[i].classList.add('red-rating');
-
   }
 }
 
@@ -145,3 +149,12 @@ function addNoResultsElement() {
 
 getPopularMovies();
 searchForm.addEventListener('submit', getDataByQuery);
+
+const closeButton = document.querySelector('.no-value button.close');
+closeButton.addEventListener('click', switchMessage);
+
+function switchMessage(event) {
+  const message = document.querySelector('.no-value');
+  (event.target.classList.contains('close')) ? message.classList.remove('open') :
+    message.classList.add('open');
+}
