@@ -49,6 +49,11 @@ body {
   flex-wrap: wrap;
   padding: 20px 30px;
 }
+.home-link,
+.home-link:visited {
+  text-decoration: none;
+  cursor: pointer;
+}
 .header-title {
   margin: 0;
   color: #f7ea74;
