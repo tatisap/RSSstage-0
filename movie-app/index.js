@@ -1,7 +1,5 @@
-const posters = document.querySelectorAll('.movie-poster');
-const titles = document.querySelectorAll('.movie-title');
-const ratings = document.querySelectorAll('.movie-rating');
 const searchForm = document.querySelector('.search-form');
+const mainContainer = document.querySelector('.main-container');
 
 async function getPopularMovies() {
   const popularMoviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=fcbdf426eda6fb1641d20038dd9e99f5&language=en-US&page=1';
@@ -12,6 +10,7 @@ async function getPopularMovies() {
   const configRes = await fetch('https://api.themoviedb.org/3/configuration?api_key=fcbdf426eda6fb1641d20038dd9e99f5');
   const configData = await configRes.json();
 
+  addCards(popularMoviesData);
   addPosters(popularMoviesData, configData);
   addTitles(popularMoviesData);
   addRatings(popularMoviesData);
@@ -19,6 +18,9 @@ async function getPopularMovies() {
 
 async function getDataByQuery(event) {
   event.preventDefault();
+
+  mainContainer.innerHTML = '';
+  document.body.classList.remove('all-height');
 
   const query = event.target.query.value;
   const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=fcbdf426eda6fb1641d20038dd9e99f5&language=en-US&query=${query}&page=1&include_adult=false`;
@@ -29,12 +31,25 @@ async function getDataByQuery(event) {
   const configRes = await fetch('https://api.themoviedb.org/3/configuration?api_key=fcbdf426eda6fb1641d20038dd9e99f5');
   const configData = await configRes.json();
 
-  addPosters(foundMoviesData, configData);
-  addTitles(foundMoviesData);
-  addRatings(foundMoviesData);
+  if (foundMoviesData.total_results === 0) {
+    addNoResultsElement();
+    document.body.classList.add('all-height');
+  } else {
+    addCards(foundMoviesData);
+    addPosters(foundMoviesData, configData);
+    addTitles(foundMoviesData);
+    addRatings(foundMoviesData);
+  }
+}
+
+function addCards(data) {
+  for (let i = 0; i < data.results.length; i++) {
+    mainContainer.append( createNewMovieCard() );
+  }
 }
 
 function addPosters(data, config) {
+  const posters = document.querySelectorAll('.movie-poster');
   for (let i = 0; i < posters.length; i++) { 
     posters[i].style.display = 'inline';
 
@@ -48,15 +63,54 @@ function addPosters(data, config) {
 }
 
 function addTitles(data) {
+  const titles = document.querySelectorAll('.movie-title');
   for (let i = 0; i < titles.length; i++) { 
-    titles[i].textContent = data.results[i].original_title;
+    titles[i].textContent = data.results[i].title;
   }
 }
 
 function addRatings(data) {
+  const ratings = document.querySelectorAll('.movie-rating');
   for (let i = 0; i < ratings.length; i++) { 
     ratings[i].textContent = data.results[i].vote_average;
   }
+}
+
+function createNewMovieCard() {
+  let card = document.createElement('div');
+  card.classList.add('movie-card');
+
+  let posterWrapper = document.createElement('div');
+  posterWrapper.classList.add('movie-poster-wrapper');
+
+  let info = document.createElement('div');
+  info.classList.add('movie-info');
+  
+  card.append(posterWrapper);
+  card.append(info);
+
+  let poster = document.createElement('img');
+  poster.classList.add('movie-poster');
+
+  posterWrapper.append(poster);
+
+  let title = document.createElement('h2');
+  title.classList.add('movie-title');
+
+  let rating = document.createElement('div');
+  rating.classList.add('movie-rating');
+
+  info.append(title);
+  info.append(rating);
+
+  return card;
+}
+
+function addNoResultsElement() {
+  let noResults = document.createElement('div');
+  noResults.classList.add('no-results');
+  noResults.textContent = 'No results';
+  mainContainer.append(noResults);
 }
 
 getPopularMovies();
