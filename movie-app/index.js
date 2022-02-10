@@ -1,5 +1,6 @@
 const searchForm = document.querySelector('.search-form');
 const mainContainer = document.querySelector('.main-container');
+const closeButton = document.querySelector('.no-value button.close');
 
 async function getPopularMovies() {
   const popularMoviesUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=fcbdf426eda6fb1641d20038dd9e99f5&language=en-US&page=1';
@@ -147,14 +148,12 @@ function addNoResultsElement() {
   mainContainer.append(noResults);
 }
 
-getPopularMovies();
-searchForm.addEventListener('submit', getDataByQuery);
-
-const closeButton = document.querySelector('.no-value button.close');
-closeButton.addEventListener('click', switchMessage);
-
 function switchMessage(event) {
   const message = document.querySelector('.no-value');
   (event.target.classList.contains('close')) ? message.classList.remove('open') :
     message.classList.add('open');
 }
+
+getPopularMovies();
+searchForm.addEventListener('submit', getDataByQuery);
+closeButton.addEventListener('click', switchMessage);
