@@ -25,7 +25,7 @@ export class JShape extends Shape {
         positions.push(new Position(coords.x + 1, coords.y));
         positions.push(new Position(coords.x, coords.y));
         positions.push(new Position(coords.x - 1, coords.y));
-        positions.push(new Position(coords.x + 1, coords.y - 1));
+        positions.push(new Position(coords.x - 1, coords.y - 1));
       } break;
       case 3: {
         positions.push(new Position(coords.x, coords.y + 1));
