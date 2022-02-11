@@ -1,3 +1,5 @@
+import { Block } from './block.js'
+
 export class Shape {
   constructor(blocks) {
     this.blocks = blocks;
