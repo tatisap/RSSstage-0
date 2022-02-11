@@ -1,5 +1,12 @@
 const field = document.querySelector('.game-field');
 
+class Position {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
 class Block {
   constructor(x, y) {
     let block = document.createElement('div');
@@ -29,11 +36,22 @@ class Block {
   moveLeft() {
     this.x -= 1;
   }
+  delete() {
+    this.htmlElement.remove();
+  }
+  getCurrentPosition() {
+    return new Position(this.x, this.y);
+  }
+  setPosition(position) {
+    this.x = position.x;
+    this.y = position.y;
+  }
 }
 
 class Shape {
   constructor(blocks) {
     this.blocks = blocks;
+    this.variant = 1;
   }
   insert() {
     this.blocks.forEach(block => block.insert());
@@ -50,60 +68,104 @@ class Shape {
   moveRight() {
     this.blocks.forEach(block => block.moveRight());
   }
+  clean() {
+    this.blocks.forEach(block => block.delete());
+    this.blocks = [];
+  }
+  setPositions(positions) {
+    this.blocks.forEach((block, index) => block.setPosition(positions[index]));
+  }
+  getNextVariant() {
+    this.variant = (this.variant === 1) ? 2 : 
+      (this.variant === 2) ? 3 :
+      (this.variant === 3) ? 4 : 1;
+    return this.variant;
+  }
 }
 
 class Square extends Shape {
-  constructor() {
+  constructor(x, y) {
     let blocks = [];
-    blocks.push(new Block(0, 0));
-    blocks.push(new Block(0, 1));
-    blocks.push(new Block(1, 1));
-    blocks.push(new Block(1, 0));
+    blocks.push(new Block(x, y));
+    blocks.push(new Block(x, y + 1));
+    blocks.push(new Block(x + 1, y + 1));
+    blocks.push(new Block(x + 1, y));
     super(blocks);
   }
 }
 
 class LShape extends Shape {
-  constructor() {
+  constructor(x, y) {
     let blocks = [];
-    blocks.push(new Block(0, 0));
-    blocks.push(new Block(0, 1));
-    blocks.push(new Block(0, 2));
-    blocks.push(new Block(1, 2));
+    blocks.push(new Block(x, y));
+    blocks.push(new Block(x, y + 1));
+    blocks.push(new Block(x, y + 2));
+    blocks.push(new Block(x + 1, y + 2));
     super(blocks);
   }
 }
 
 class TShape extends Shape {
-  constructor() {
+  constructor(x, y) {
     let blocks = [];
-    blocks.push(new Block(1, 0));
-    blocks.push(new Block(0, 1));
-    blocks.push(new Block(1, 1));
-    blocks.push(new Block(2, 1));
+    blocks.push(new Block(x + 1, y));
+    blocks.push(new Block(x, y + 1));
+    blocks.push(new Block(x + 1, y + 1));
+    blocks.push(new Block(x + 2, y + 1));
     super(blocks);
   }
 }
 
 class ZShape extends Shape {
-  constructor() {
+  constructor(x, y) {
     let blocks = [];
-    blocks.push(new Block(0, 0));
-    blocks.push(new Block(1, 0));
-    blocks.push(new Block(1, 1));
-    blocks.push(new Block(2, 1));
+    blocks.push(new Block(x, y));
+    blocks.push(new Block(x + 1, y));
+    blocks.push(new Block(x + 1, y + 1));
+    blocks.push(new Block(y + 2, y + 1));
     super(blocks);
   }
 }
 
 class Line extends Shape {
-  constructor() {
+  constructor(x, y) {
     let blocks = [];
-    blocks.push(new Block(0, 0));
-    blocks.push(new Block(0, 1));
-    blocks.push(new Block(0, 2));
-    blocks.push(new Block(0, 3));
+    blocks.push(new Block(x, y));
+    blocks.push(new Block(x, y + 1));
+    blocks.push(new Block(x, y + 2));
+    blocks.push(new Block(x, y + 3));
     super(blocks);
+  }
+  rotate() {
+    let coords = this.blocks[1].getCurrentPosition();
+    let positions = [];
+    switch (this.getNextVariant()) {
+      case 1: {
+        positions.push(new Position(coords.x, coords.y - 1));
+        positions.push(new Position(coords.x, coords.y));
+        positions.push(new Position(coords.x, coords.y + 1));
+        positions.push(new Position(coords.x, coords.y + 2));
+      } break;
+      case 2: {
+        positions.push(new Position(coords.x + 1, coords.y));
+        positions.push(new Position(coords.x, coords.y));
+        positions.push(new Position(coords.x - 1, coords.y));
+        positions.push(new Position(coords.x - 2, coords.y));
+      } break;
+      case 3: {
+        positions.push(new Position(coords.x, coords.y - 2));
+        positions.push(new Position(coords.x, coords.y ));
+        positions.push(new Position(coords.x, coords.y - 1));
+        positions.push(new Position(coords.x, coords.y + 1));
+      } break;
+      case 4: {
+        positions.push(new Position(coords.x -1, coords.y));
+        positions.push(new Position(coords.x, coords.y));
+        positions.push(new Position(coords.x + 1, coords.y));
+        positions.push(new Position(coords.x + 2, coords.y));
+      } break;
+    }
+    this.setPositions(positions);
   }
 }
 
@@ -117,15 +179,16 @@ function generateShape() {
   }
 }
 
-let square = generateShape();
+//let square = generateShape();
+let square = new Line(5, 0);
 square.insert();
 square.position();
 field.addEventListener('click', () => {
-  square.moveRight();
+  square.rotate();
   square.position();
 })
 
-setInterval( () => {
+/*setInterval( () => {
   square.moveDown();
   square.position();
-}, 1000);
+}, 1000);*/
