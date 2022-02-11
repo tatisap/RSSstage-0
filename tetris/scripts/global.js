@@ -1,0 +1,1 @@
+export const field = document.querySelector('.game-field');
