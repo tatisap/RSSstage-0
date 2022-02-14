@@ -43,6 +43,9 @@ export class Shape {
   getMinXBlocksPosition() {
     return Math.min(...this.getCurrentPositions().map(position => position.x));
   }
+  getMaxYBlocksPosition() {
+    return Math.max(...this.getCurrentPositions().map(position => position.y));
+  }
   getNextVariant() {
     this.variant = (this.variant === 1) ? 2 : 
       (this.variant === 2) ? 3 :
