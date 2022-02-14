@@ -49,6 +49,9 @@ body {
   flex-wrap: wrap;
   padding: 20px 30px;
 }
+.footer-container {
+  padding-top: 40px;
+}
 .home-link,
 .home-link:visited {
   text-decoration: none;
@@ -176,7 +179,7 @@ button.close {
   margin: 0;
   font-size: 22px;
   font-weight: 300;
-  overflow: scroll;
+  overflow: auto;
 }
 .movie-rating {
   width: 40px;
@@ -220,7 +223,7 @@ button.close {
   background-color: #1c1c1c;
   font-weight: 300;
   transition: 0.5s;
-  overflow: scroll;
+  overflow: auto;
 }
 .movie-overview.open {
   top: 0px;
