@@ -103,6 +103,9 @@ function createNewMovieCard() {
   let info = document.createElement('div');
   info.classList.add('movie-info');
 
+  let overview = document.createElement('div');
+  overview.classList.add('movie-overview');
+
   let showButton = document.createElement('button');
   showButton.classList.add('show-overview');
   showButton.textContent = 'Show overview';
@@ -110,6 +113,7 @@ function createNewMovieCard() {
   
   card.append(posterWrapper);
   card.append(info);
+  card.append(overview);
   card.append(showButton);
 
   let poster = document.createElement('img');
@@ -123,12 +127,8 @@ function createNewMovieCard() {
   let rating = document.createElement('div');
   rating.classList.add('movie-rating');
 
-  let overview = document.createElement('div');
-  overview.classList.add('movie-overview');
-
   info.append(title);
   info.append(rating);
-  info.append(overview);
 
   return card;
 }
@@ -155,3 +155,15 @@ function switchMessage(event) {
 getPopularMovies();
 searchForm.addEventListener('submit', getDataByQuery);
 closeButton.addEventListener('click', switchMessage);
+
+console.log('Cамооценка: \n' +
+'1) Вёрстка +10; \n' +
+'2) При загрузке приложения на странице отображаются карточки фильмов с полученными от API данными +10; \n' +
+'3) Если в поле поиска ввести слово и отправить поисковый запрос, на странице отобразятся карточки фильмов, в названиях которых есть это слово, если такие данные предоставляет API +10; \n' +
+'4) Поиск +30; \n' +
+'5) Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10: \n' +
+'Допфункционал: \n' +
+'- наличие на карточке фильма его описания и рейтинга на IMDb; \n' +
+'- оповешение о пустом поисковом запросе при нажатии Enter или кнопки Submit в случае, если поле поиска пустое; \n' +
+'- No results, если поиск не дал результатов; \n' +
+'- замещающая картинка при отсутствии постера фильма.');
