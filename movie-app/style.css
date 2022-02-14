@@ -148,7 +148,7 @@ button.close {
 .movie-card {
   position: relative;
   max-width: 320px;
-  height: 630px;
+  min-height: 600px;
   padding: 10px;
   padding-bottom: 30px;
   box-shadow: 3px 2px 54px 0px rgba(0,0,0,0.75);
@@ -170,8 +170,6 @@ button.close {
 .movie-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  height: 120px;
   gap: 5px;
 }
 .movie-title {
@@ -213,10 +211,10 @@ button.close {
 }
 .movie-overview {
   position: absolute;
-  top: 600px;
+  bottom: -100%;
   left: 0px;
   width: 320px;
-  height: 600px;
+  height: 100%;
   padding: 20px;
   padding-bottom: 50px;
   line-height: 30px;
@@ -226,7 +224,7 @@ button.close {
   overflow: auto;
 }
 .movie-overview.open {
-  top: 0px;
+  bottom: 0px;
 }
 .left-side {
   display: flex;

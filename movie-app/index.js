@@ -103,6 +103,9 @@ function createNewMovieCard() {
   let info = document.createElement('div');
   info.classList.add('movie-info');
 
+  let overview = document.createElement('div');
+  overview.classList.add('movie-overview');
+
   let showButton = document.createElement('button');
   showButton.classList.add('show-overview');
   showButton.textContent = 'Show overview';
@@ -110,6 +113,7 @@ function createNewMovieCard() {
   
   card.append(posterWrapper);
   card.append(info);
+  card.append(overview);
   card.append(showButton);
 
   let poster = document.createElement('img');
@@ -123,12 +127,8 @@ function createNewMovieCard() {
   let rating = document.createElement('div');
   rating.classList.add('movie-rating');
 
-  let overview = document.createElement('div');
-  overview.classList.add('movie-overview');
-
   info.append(title);
   info.append(rating);
-  info.append(overview);
 
   return card;
 }
