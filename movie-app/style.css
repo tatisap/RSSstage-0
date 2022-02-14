@@ -177,7 +177,6 @@ button.close {
   margin: 0;
   font-size: 22px;
   font-weight: 300;
-  overflow: auto;
 }
 .movie-rating {
   width: 40px;
