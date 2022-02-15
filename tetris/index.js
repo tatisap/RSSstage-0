@@ -10,11 +10,12 @@ import { SShape } from './scripts/s-shape.js'
 import { generateShape } from './scripts/shapes-generator.js'
 import { Block } from './scripts/block.js'
 import { Wall } from './scripts/wall.js'
+import { Position } from './scripts/position.js'
 
 initFieldBackground();
 
 //let square = generateShape();
-let square = new IShape(5, 0);
+let square = new LShape(5, 0);
 square.insert();
 square.position();
 
@@ -50,16 +51,20 @@ document.addEventListener('keydown', (event) => {
 let wall = new Wall(10, 16);
 
 wall.setBricksInRow(14);
+wall.setBrick(5, 13);
+wall.setBrick(5, 12);
+wall.setBrick(5, 11);
 
 let timerId = setInterval( () => {
   let columnsNumbers = Array.from(new Set (square.getCurrentPositions().map(pos => pos.x)));
   let columns = [];
-  columnsNumbers.forEach(number => columns = columns.concat(wall.getColumn(number)));
+  columnsNumbers.forEach(number => columns.push(wall.getColumn(number)));
 
-  let coordsBricks = [];
-  columns.forEach(brick => {if (brick !== '[]') coordsBricks.push(brick.getCurrentPosition())});
-  
-  if (/*square.getMaxYBlocksPosition() >= 14 ||*/ coordsBricks.some(coords => square.getMaxYBlocksPosition() + 1 === coords.y) ) {
+  let coordsUpperBricks = [];
+  coordsUpperBricks = columns.map(column => new Position(column.find(brick => brick !== '[]').x, Math.min(...column.map(brick => (brick !== '[]') ? brick.y : 15))));
+  let coordsUnderShapeBricks = columnsNumbers.map(number => new Position(number, square.getMaxYBlocksPositionInColumn(number)));
+
+  if (/*square.getMaxYBlocksPosition() >= 14 ||*/ coordsUpperBricks.some(coords => coordsUnderShapeBricks.find(pos => pos.x === coords.x).y + 1 === coords.y)) {
     clearInterval(timerId);
     let positions = square.getCurrentPositions();
     positions.forEach(pos => {

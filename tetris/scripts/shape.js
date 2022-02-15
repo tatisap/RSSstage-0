@@ -43,8 +43,8 @@ export class Shape {
   getMinXBlocksPosition() {
     return Math.min(...this.getCurrentPositions().map(position => position.x));
   }
-  getMaxYBlocksPosition() {
-    return Math.max(...this.getCurrentPositions().map(position => position.y));
+  getMaxYBlocksPositionInColumn(number) {
+    return Math.max(...this.getCurrentPositions().map(position => (position.x === number) ? position.y : -1));
   }
   getNextVariant() {
     this.variant = (this.variant === 1) ? 2 : 

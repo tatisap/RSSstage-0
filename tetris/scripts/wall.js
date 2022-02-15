@@ -24,6 +24,11 @@ export class Wall {
       row.bricks[i].position();
     }
   } 
+  setBrick(x, y) {
+    this.rows[y].bricks[x] = new Block(x, y);
+    this.rows[y].bricks[x].insert();
+    this.rows[y].bricks[x].position();
+  }
   getColumn(x) {
     return this.rows.map(row => row.bricks[x]);
   }
