@@ -60,4 +60,27 @@ export class Shape {
     let xCoords = this.getCurrentPositions().map(position => position.x);
     return (side === 'left') ? xCoords.some(x => x <= 0) : xCoords.some(x => x >= 9);
   }
+  handleEvent(event) {
+    switch (event.code) {
+      case 'ArrowLeft': if (!this.isOutOfField('left')) this.moveLeft(1);
+        break;
+      case 'ArrowRight': if (!this.isOutOfField('right')) this.moveRight(1);
+        break;
+      case 'ArrowUp': {
+        this.rotate();
+        if (!this.isOnField()) {
+          let diff = 0;
+          if (this.isOutOfField('left')) {
+            diff = 0 - this.getMinXBlocksPosition();
+            this.moveRight(diff);
+          }
+          if (this.isOutOfField('right')) {
+            diff = this.getMaxXBlocksPosition() - 9;
+            this.moveLeft(diff);
+          }
+        }
+      }
+    }
+    this.position();
+  }
 }

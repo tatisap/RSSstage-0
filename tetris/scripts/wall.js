@@ -11,7 +11,7 @@ export class Wall {
     this.height = height;
   }
   getBrickByCoords(x, y) {
-    return this.rows[y][x];
+    return this.rows[y].bricks[x];
   }
   getRow(y) {
     return this.rows[y];

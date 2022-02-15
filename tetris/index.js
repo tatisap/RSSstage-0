@@ -11,73 +11,41 @@ import { generateShape } from './scripts/shapes-generator.js'
 import { Block } from './scripts/block.js'
 import { Wall } from './scripts/wall.js'
 import { Position } from './scripts/position.js'
+import { checkCollision } from './scripts/collision-checker.js'
 
 initFieldBackground();
+let wall = new Wall(10, 17);
+wall.setBricksInRow(16);
 
-//let square = generateShape();
-let square = new LShape(5, 0);
+function start() {
+  let currentShape = generateShape();
+  currentShape.insert();
+  currentShape.position();
+  document.addEventListener('keydown', currentShape);
+
+  let timerId = setInterval( () => {
+    if (checkCollision(currentShape, wall)) {
+      clearInterval(timerId);
+      let positions = currentShape.getCurrentPositions();
+      positions.forEach(pos => wall.setBrick(pos.x, pos.y));
+      currentShape.clean();
+      document.removeEventListener('keydown', currentShape);
+      console.log(wall);
+      start();
+    }
+    currentShape.moveDown();
+    currentShape.position();
+  }, 750);
+}
+
+start();
+
+
+
+
+
+
+
+/*let square = new LShape(5, 0);
 square.insert();
-square.position();
-
-field.addEventListener('click', () => {
-  square.rotate();
-  if (square.isOnField()) {
-     square.position();
-  } else {
-    let diff = 0;
-    if (square.isOutOfField('left')) {
-      diff = 0 - square.getMinXBlocksPosition();
-      square.moveRight(diff);
-      square.position();
-    }
-    if (square.isOutOfField('right')) {
-      diff = square.getMaxXBlocksPosition() - 9;
-      square.moveLeft(diff);
-      square.position();
-    }
-  }
-})
-
-document.addEventListener('keydown', (event) => {
-    switch (event.code) {
-      case 'ArrowLeft': if (!square.isOutOfField('left')) square.moveLeft(1);
-        break;
-      case 'ArrowRight': if (!square.isOutOfField('right')) square.moveRight(1);
-        break;
-    }
-    square.position();
-})
-
-let wall = new Wall(10, 16);
-
-wall.setBricksInRow(14);
-wall.setBrick(5, 13);
-wall.setBrick(5, 12);
-wall.setBrick(5, 11);
-
-let timerId = setInterval( () => {
-  let columnsNumbers = Array.from(new Set (square.getCurrentPositions().map(pos => pos.x)));
-  let columns = [];
-  columnsNumbers.forEach(number => columns.push(wall.getColumn(number)));
-
-  let coordsUpperBricks = [];
-  coordsUpperBricks = columns.map(column => new Position(column.find(brick => brick !== '[]').x, Math.min(...column.map(brick => (brick !== '[]') ? brick.y : 15))));
-  let coordsUnderShapeBricks = columnsNumbers.map(number => new Position(number, square.getMaxYBlocksPositionInColumn(number)));
-
-  if (/*square.getMaxYBlocksPosition() >= 14 ||*/ coordsUpperBricks.some(coords => coordsUnderShapeBricks.find(pos => pos.x === coords.x).y + 1 === coords.y)) {
-    clearInterval(timerId);
-    let positions = square.getCurrentPositions();
-    positions.forEach(pos => {
-      let brick = wall.getBrickByCoords(pos.x, pos.y);
-      brick = new Block(pos.x, pos.y);
-      brick.insert();
-      brick.position();
-    });
-    square.clean();
-  }
-  square.moveDown();
-  square.position();
-}, 500);
-
-
-
+square.position();*/
