@@ -55,6 +55,7 @@ body {
   padding: 8px;
   border: #1c1c1c 1px solid;
   background-color: wheat;
+  transition: 0.3s;
 }
 .sub-block {
   width: 100%;

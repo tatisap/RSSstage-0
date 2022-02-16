@@ -1,5 +1,7 @@
 import { Block } from './block.js'
+import { checkCollision } from './collision-checker.js';
 import { fieldXCoords } from './global.js';
+import { fieldYCoords } from './global.js';
 
 export class Shape {
   constructor(blocks) {
@@ -52,9 +54,17 @@ export class Shape {
       (this.variant === 3) ? 4 : 1;
     return this.variant;
   }
+  getPreviousVariant() {
+    this.variant = (this.variant === 4) ? 3 : 
+      (this.variant === 3) ? 2 :
+      (this.variant === 2) ? 1 : 4;
+    return this.variant;
+  }
   isOnField() {
-    let xCoords = this.getCurrentPositions().map(position => position.x);
-    return xCoords.every(x => fieldXCoords.includes(x));
+    const coords = this.getCurrentPositions();
+    const xCoords = coords.map(position => position.x);
+    const yCoords = coords.map(position => position.y);
+    return xCoords.every(x => fieldXCoords.includes(x)) && yCoords.every(y => fieldYCoords.includes(y));
   }
   isOutOfField(side) {
     let xCoords = this.getCurrentPositions().map(position => position.x);
@@ -62,9 +72,9 @@ export class Shape {
   }
   handleEvent(event) {
     switch (event.code) {
-      case 'ArrowLeft': if (!this.isOutOfField('left')) this.moveLeft(1);
+      case 'ArrowLeft': if (!checkCollision(this, 'left')) this.moveLeft(1);
         break;
-      case 'ArrowRight': if (!this.isOutOfField('right')) this.moveRight(1);
+      case 'ArrowRight': if (!checkCollision(this, 'right')) this.moveRight(1);
         break;
       case 'ArrowUp': {
         this.rotate();
@@ -73,12 +83,14 @@ export class Shape {
           if (this.isOutOfField('left')) {
             diff = 0 - this.getMinXBlocksPosition();
             this.moveRight(diff);
+            if (checkCollision(this, 'none')) this.cancelRotation();
           }
           if (this.isOutOfField('right')) {
             diff = this.getMaxXBlocksPosition() - 9;
             this.moveLeft(diff);
+            if (checkCollision(this, 'none')) this.cancelRotation();
           }
-        }
+        } else if (checkCollision(this, 'none')) this.cancelRotation();
       }
     }
     this.position();

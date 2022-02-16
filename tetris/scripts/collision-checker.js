@@ -1,13 +1,18 @@
-import { Position } from './position.js'
+import { wall } from '../index.js';
 
-export function checkCollision(shape, wall) {
-  let columnsNumbers = Array.from(new Set (shape.getCurrentPositions().map(pos => pos.x)));
-  let columns = [];
-  columnsNumbers.forEach(number => columns.push(wall.getColumn(number)));
-
-  let coordsUpperBricks = [];
-  coordsUpperBricks = columns.map(column => new Position(column.find(brick => brick !== '[]').x, Math.min(...column.map(brick => (brick !== '[]') ? brick.y : 16))));
-  let coordsUnderShapeBricks = columnsNumbers.map(number => new Position(number, shape.getMaxYBlocksPositionInColumn(number)));
-
-  return coordsUpperBricks.some(coords => coordsUnderShapeBricks.find(pos => pos.x === coords.x).y + 1 === coords.y);
+export function checkCollision(shape, direction) {
+  if (shape.isOnField()) {
+    let positions = shape.getCurrentPositions();
+    switch (direction) {
+      case 'down': positions.forEach(pos => pos.y += 1);
+        break;
+      case 'right': positions.forEach(pos => pos.x +=1);
+        break;
+      case 'left': positions.forEach(pos => pos.x -= 1);
+        break;
+    }
+    return (positions.some(pos => pos.x > wall.width - 1)) ? true :
+      (positions.some(pos => pos.x < 0)) ? true :
+      (positions.some(pos => pos.y > wall.height - 1)) ? true : !positions.every(pos => wall.getBrickByCoords(pos.x, pos.y) === '[]');
+  }
 }

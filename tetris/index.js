@@ -14,8 +14,7 @@ import { Position } from './scripts/position.js'
 import { checkCollision } from './scripts/collision-checker.js'
 
 initFieldBackground();
-let wall = new Wall(10, 17);
-wall.setBricksInRow(16);
+export let wall = new Wall(10, 16);
 
 function start() {
   let currentShape = generateShape();
@@ -24,18 +23,23 @@ function start() {
   document.addEventListener('keydown', currentShape);
 
   let timerId = setInterval( () => {
-    if (checkCollision(currentShape, wall)) {
+    if (checkCollision(currentShape, 'down')) {
       clearInterval(timerId);
       let positions = currentShape.getCurrentPositions();
       positions.forEach(pos => wall.setBrick(pos.x, pos.y));
       currentShape.clean();
       document.removeEventListener('keydown', currentShape);
-      console.log(wall);
+      //console.log(wall);
+      let n = wall.deleteFullRows();
+      if (n) {
+        wall.addRowsAtTheTop(n);
+        wall.updateBricksYCoords();
+      }
       start();
     }
     currentShape.moveDown();
     currentShape.position();
-  }, 750);
+  }, 500);
 }
 
 start();

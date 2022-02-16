@@ -12,9 +12,17 @@ export class TShape extends Shape {
     super(blocks);
   }
   rotate() {
+    let variant = this.getNextVariant();
+    this.setPositions(this.getPositionsByVariant(variant));
+  }
+  cancelRotation() {
+    let variant = this.getPreviousVariant();
+    this.setPositions(this.getPositionsByVariant(variant));
+  }
+  getPositionsByVariant(variant) {
     let coords = this.blocks[0].getCurrentPosition();
     let positions = [];
-    switch (this.getNextVariant()) {
+    switch (variant) {
       case 1: {
         positions.push(new Position(coords.x, coords.y));
         positions.push(new Position(coords.x - 1, coords.y + 1));
@@ -40,6 +48,6 @@ export class TShape extends Shape {
         positions.push(new Position(coords.x + 1, coords.y + 1));
       } break;
     }
-    this.setPositions(positions);
+    return positions;
   }
 }

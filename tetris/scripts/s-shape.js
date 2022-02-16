@@ -12,9 +12,17 @@ export class SShape extends Shape {
     super(blocks);
   }
   rotate() {
+    let variant = this.getNextVariant();
+    this.setPositions(this.getPositionsByVariant(variant));
+  }
+  cancelRotation() {
+    let variant = this.getPreviousVariant();
+    this.setPositions(this.getPositionsByVariant(variant));
+  }
+  getPositionsByVariant(variant) {
     let coords = this.blocks[1].getCurrentPosition();
     let positions = [];
-    switch (this.getNextVariant()) {
+    switch (variant) {
       case 1:
       case 3: {
         positions.push(new Position(coords.x + 1, coords.y));
@@ -30,6 +38,6 @@ export class SShape extends Shape {
         positions.push(new Position(coords.x + 1, coords.y + 1));
       } break;
     }
-    this.setPositions(positions);
+    return positions;
   }
 }

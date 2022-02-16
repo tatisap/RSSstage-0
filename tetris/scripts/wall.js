@@ -35,6 +35,33 @@ export class Wall {
   getExistedBricksPositions() {
     return this.rows.flat(Infinity).map(brick => brick.getCurrentPosition());
   }
+  deleteFullRows() {
+    let fullRows = this.rows.filter(row => row.bricks.every(brick => brick !== '[]'));
+    if (fullRows.length === 0) return 0;
+    let rowsNumbers = fullRows.map(row => this.rows.indexOf(row)).reverse();
+    rowsNumbers.forEach(number => {
+      this.rows[number].bricks.forEach(brick => brick.delete());
+      this.rows.splice(number, 1)
+    });
+    return rowsNumbers.length;
+  }
+  addRowsAtTheTop(n) {
+    while (n) {
+      this.rows.unshift(new Row(this.width));
+      n--;
+    }
+  } 
+  updateBricksYCoords() {
+    this.rows.forEach( (row, index) => {
+      let n = index;
+      row.bricks.forEach(brick => {
+        if (brick !== '[]') {
+          brick.y = index;
+          brick.position();
+        }
+      });
+    });
+  }
 }
 
 class Row {
