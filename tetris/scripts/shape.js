@@ -1,7 +1,5 @@
-import { Block } from './block.js'
+import { wall } from './global.js';
 import { checkCollision } from './collision-checker.js';
-import { fieldXCoords } from './global.js';
-import { fieldYCoords } from './global.js';
 
 export class Shape {
   constructor(blocks) {
@@ -45,9 +43,6 @@ export class Shape {
   getMinXBlocksPosition() {
     return Math.min(...this.getCurrentPositions().map(position => position.x));
   }
-  getMaxYBlocksPositionInColumn(number) {
-    return Math.max(...this.getCurrentPositions().map(position => (position.x === number) ? position.y : -1));
-  }
   getNextVariant() {
     this.variant = (this.variant === 1) ? 2 : 
       (this.variant === 2) ? 3 :
@@ -60,15 +55,15 @@ export class Shape {
       (this.variant === 2) ? 1 : 4;
     return this.variant;
   }
-  isOnField() {
+  isOnField(wall) {
     const coords = this.getCurrentPositions();
     const xCoords = coords.map(position => position.x);
     const yCoords = coords.map(position => position.y);
-    return xCoords.every(x => fieldXCoords.includes(x)) && yCoords.every(y => fieldYCoords.includes(y));
+    return xCoords.every(x => Object.keys(wall.rows[0].bricks).includes(x)) && yCoords.every(y => Object.keys(wall.rows).includes(y));
   }
   isOutOfField(side) {
     let xCoords = this.getCurrentPositions().map(position => position.x);
-    return (side === 'left') ? xCoords.some(x => x <= 0) : xCoords.some(x => x >= 9);
+    return (side === 'left') ? xCoords.some(x => x <= 0) : xCoords.some(x => x >= wall.width - 1);
   }
   handleEvent(event) {
     switch (event.code) {
@@ -76,19 +71,27 @@ export class Shape {
         break;
       case 'ArrowRight': if (!checkCollision(this, 'right')) this.moveRight(1);
         break;
+      case 'ArrowDown': if (!checkCollision(this, 'down')) this.moveDown();
+        break;
       case 'ArrowUp': {
         this.rotate();
-        if (!this.isOnField()) {
+        if (!this.isOnField(wall)) {
           let diff = 0;
           if (this.isOutOfField('left')) {
             diff = 0 - this.getMinXBlocksPosition();
             this.moveRight(diff);
-            if (checkCollision(this, 'none')) this.cancelRotation();
+            if (checkCollision(this, 'none')) {
+              this.cancelRotation();
+              this.moveLeft(diff);
+            }
           }
           if (this.isOutOfField('right')) {
             diff = this.getMaxXBlocksPosition() - 9;
             this.moveLeft(diff);
-            if (checkCollision(this, 'none')) this.cancelRotation();
+            if (checkCollision(this, 'none')) {
+              this.cancelRotation();
+              this.moveRight(diff);
+            }
           }
         } else if (checkCollision(this, 'none')) this.cancelRotation();
       }

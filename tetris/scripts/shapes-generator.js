@@ -1,10 +1,10 @@
-import { IShape } from './i-shape.js'
-import { OShape } from './o-shape.js'
-import { LShape } from './l-shape.js'
-import { JShape } from './j-shape.js'
-import { TShape } from './t-shape.js'
-import { ZShape } from './z-shape.js'
-import { SShape } from './s-shape.js'
+import { IShape } from './shapes/i-shape.js'
+import { OShape } from './shapes/o-shape.js'
+import { LShape } from './shapes/l-shape.js'
+import { JShape } from './shapes/j-shape.js'
+import { TShape } from './shapes/t-shape.js'
+import { ZShape } from './shapes/z-shape.js'
+import { SShape } from './shapes/s-shape.js'
 import { startPosition } from './global.js'
 
 export function generateShape() {

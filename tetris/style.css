@@ -9,6 +9,7 @@ html {
 }
 body {
   background-color: #1c1c1c;
+  color: white;
 }
 .game-container {
   display: flex;
@@ -61,4 +62,27 @@ body {
   width: 100%;
   height: 100%;
   box-shadow: 6px 6px 2px 6px rgba(34, 60, 80, 0.2);
+}
+.start-game {
+  position: absolute;
+  top: calc(100vh / 2 - 350px);
+  left: calc(100vw / 2 - 220px);;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background-color: #1c1c1c;
+  box-shadow: 0px 0px 100vmax 100vmax rgba(0,0,0,0.75);
+}
+.score-list-wrapper {
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: calc(100vw / 2 - 220px);
+  width: 300px;
+  height: 300px;
+  background-color: #1c1c1c;
+  box-shadow: 0px 0px 100vmax 100vmax rgba(0,0,0,0.75);
 }

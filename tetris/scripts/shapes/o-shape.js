@@ -1,5 +1,5 @@
-import { Block } from './block.js'
-import { Shape } from './shape.js'
+import { Block } from '../block.js'
+import { Shape } from '../shape.js'
 
 export class OShape extends Shape {
   constructor(x, y) {

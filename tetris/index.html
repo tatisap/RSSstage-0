@@ -6,15 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tetris</title>
   <link rel="icon" href="./assets/favicon.ico">
-  <link rel="stylesheet" href="./stye.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div class="game-container">
     <div class="game-field-wrapper">
       <div class="game-field"></div>
     </div>
-    <div class="controls"></div>
+    <div class="controls">
+      <button class="score">Score</button>
+    </div>
   </div>
+  <div class="start-game">
+    <p class="greeting">Press 'New game' for start</p>
+    <button class="start-new-game">New game</button>
+  </div>
+  <div class="restart-game"></div>
+  <div class="score-list-wrapper"></div>
   <script type="module" src="./index.js"></script>
 </body>
 </html>

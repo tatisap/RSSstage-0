@@ -1,22 +1,41 @@
-import { field} from './scripts/global.js'
+import { wall } from './scripts/global.js'
 import { initFieldBackground } from './scripts/field-background.js'
-import { IShape } from './scripts/i-shape.js'
-import { OShape } from './scripts/o-shape.js'
-import { LShape } from './scripts/l-shape.js'
-import { TShape } from './scripts/t-shape.js'
-import { ZShape } from './scripts/z-shape.js'
-import { JShape } from './scripts/j-shape.js'
-import { SShape } from './scripts/s-shape.js'
 import { generateShape } from './scripts/shapes-generator.js'
-import { Block } from './scripts/block.js'
-import { Wall } from './scripts/wall.js'
-import { Position } from './scripts/position.js'
 import { checkCollision } from './scripts/collision-checker.js'
+import { Result } from './scripts/score.js'
+import { initScoreList } from './scripts/score.js'
+import { getPoints } from './scripts/score.js'
 
 initFieldBackground();
-export let wall = new Wall(10, 16);
+const resultsArchive = localStorage.getItem('archive');
+initScoreList(resultsArchive);
 
-function start() {
+let isGameOver = false;
+let resultValue = 0;
+
+const dialog = document.querySelector('.start-game');
+const greeting = dialog.querySelector('.greeting');
+const playButton = dialog.querySelector('.start-new-game');
+const scoreButton = document.querySelector('.score');
+const score = document.querySelector('.score-list-wrapper');
+const scoreList = score.querySelector('.score-list');
+
+playButton.addEventListener('click', () => {
+  dialog.style.display = 'none';
+  wall.clean();
+  isGameOver = false;
+  resultValue = 0;
+  startNewLoop();
+});
+
+scoreButton.addEventListener('click', () => {
+  score.style.display = 'block';
+})
+score.addEventListener('click', () => {
+  score.style.display = 'none';
+})
+
+function startNewLoop() {
   let currentShape = generateShape();
   currentShape.insert();
   currentShape.position();
@@ -26,30 +45,33 @@ function start() {
     if (checkCollision(currentShape, 'down')) {
       clearInterval(timerId);
       let positions = currentShape.getCurrentPositions();
-      positions.forEach(pos => wall.setBrick(pos.x, pos.y));
+      positions.forEach(pos => (pos.y < 0) ? isGameOver = true : wall.setBrick(pos.x, pos.y));
       currentShape.clean();
       document.removeEventListener('keydown', currentShape);
-      //console.log(wall);
-      let n = wall.deleteFullRows();
-      if (n) {
-        wall.addRowsAtTheTop(n);
-        wall.updateBricksYCoords();
+      if (isGameOver) {
+        let result = new Result('Unknown', resultValue);
+        if (scoreList.children.length >= 10) {
+          scoreList.firstElementChild.remove();
+          result.add(scoreList);
+        } else {
+          result.add(scoreList);
+        }
+        greeting.textContent = 'Your score: X  Press "New game" for start';
+        dialog.style.display = 'flex';
+        return;
       }
-      start();
+      let n = wall.getFullRows().length;
+      resultValue += getPoints(n);
+      wall.update();
+      startNewLoop();
     }
     currentShape.moveDown();
     currentShape.position();
-  }, 500);
+  }, 750);
 }
 
-start();
-
-
-
-
-
-
-
-/*let square = new LShape(5, 0);
-square.insert();
-square.position();*/
+window.addEventListener('beforeunload', () => {
+  const resultsElements = document.querySelectorAll('.score-list-item');
+  const results = resultsElements.map(element => element.textContent);
+  localStorage.setItem('archive', JSON.stringify(results));
+});

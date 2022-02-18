@@ -1,6 +1,6 @@
-import { Block } from './block.js'
-import { Shape } from './shape.js'
-import { Position } from './position.js'
+import { Block } from '../block.js'
+import { Shape } from '../shape.js'
+import { Position } from '../position.js'
 
 export class ZShape extends Shape {
   constructor(x, y) {

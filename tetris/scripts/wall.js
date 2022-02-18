@@ -13,37 +13,20 @@ export class Wall {
   getBrickByCoords(x, y) {
     return this.rows[y].bricks[x];
   }
-  getRow(y) {
-    return this.rows[y];
-  }
-  setBricksInRow(y) {
-    let row = this.getRow(y);
-    for (let i = 0; i < this.width; i++) {
-      row.bricks[i] = new Block(i, y);
-      row.bricks[i].insert();
-      row.bricks[i].position();
-    }
-  } 
   setBrick(x, y) {
     this.rows[y].bricks[x] = new Block(x, y);
     this.rows[y].bricks[x].insert();
     this.rows[y].bricks[x].position();
   }
-  getColumn(x) {
-    return this.rows.map(row => row.bricks[x]);
+  getFullRows() {
+    return this.rows.filter(row => row.bricks.every(brick => brick !== '[]'));
   }
-  getExistedBricksPositions() {
-    return this.rows.flat(Infinity).map(brick => brick.getCurrentPosition());
-  }
-  deleteFullRows() {
-    let fullRows = this.rows.filter(row => row.bricks.every(brick => brick !== '[]'));
-    if (fullRows.length === 0) return 0;
-    let rowsNumbers = fullRows.map(row => this.rows.indexOf(row)).reverse();
+  deleteRows(rows) {
+    let rowsNumbers = rows.map(row => this.rows.indexOf(row)).reverse();
     rowsNumbers.forEach(number => {
-      this.rows[number].bricks.forEach(brick => brick.delete());
-      this.rows.splice(number, 1)
+      this.rows[number].clean();
+      this.rows.splice(number, 1);
     });
-    return rowsNumbers.length;
   }
   addRowsAtTheTop(n) {
     while (n) {
@@ -51,16 +34,20 @@ export class Wall {
       n--;
     }
   } 
-  updateBricksYCoords() {
-    this.rows.forEach( (row, index) => {
-      let n = index;
-      row.bricks.forEach(brick => {
-        if (brick !== '[]') {
-          brick.y = index;
-          brick.position();
-        }
-      });
-    });
+  updateRowsYCoords() {
+    this.rows.forEach( (row, index) => row.updateBricksYCoords(index));
+  }
+  update() {
+    let fullRows = this.getFullRows();
+      let n = fullRows.length;
+      this.deleteRows(fullRows);
+      if (n) {
+        this.addRowsAtTheTop(n);
+        this.updateRowsYCoords();
+      }
+  }
+  clean() {
+    this.rows.forEach(row => row.clean());
   }
 }
 
@@ -71,5 +58,21 @@ class Row {
       row.push('[]');
     }
     this.bricks = row;
+  }
+  clean() {
+    this.bricks.forEach((brick, index) => {
+      if (brick !== '[]') {
+        brick.delete();
+        this.bricks[index] = '[]';
+      }
+    });
+  }
+  updateBricksYCoords(index) {
+    this.bricks.forEach(brick => {
+      if (brick !== '[]') {
+        brick.y = index;
+        brick.position();
+      }
+    });
   }
 }
