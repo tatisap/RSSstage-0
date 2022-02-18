@@ -13,11 +13,12 @@ initScoreList(resultsArchive);
 let isGameOver = false;
 let resultValue = 0;
 
-const dialog = document.querySelector('.start-game');
-const greeting = dialog.querySelector('.greeting');
-const playButton = dialog.querySelector('.start-new-game');
-const scoreButton = document.querySelector('.score');
-const score = document.querySelector('.score-list-wrapper');
+const dialog = document.querySelector('.dialog-window-wrapper');
+const greeting = dialog.querySelector('.dialog-window-info');
+const playButton = dialog.querySelector('.dialog-window-start-button');
+const scoreButton = document.querySelector('.open-score-button');
+const closeButton = document.querySelector('.close-score-button');
+const score = document.querySelector('.score-wrapper');
 const scoreList = score.querySelector('.score-list');
 
 playButton.addEventListener('click', () => {
@@ -31,7 +32,7 @@ playButton.addEventListener('click', () => {
 scoreButton.addEventListener('click', () => {
   score.style.display = 'block';
 })
-score.addEventListener('click', () => {
+closeButton.addEventListener('click', () => {
   score.style.display = 'none';
 })
 
@@ -71,7 +72,10 @@ function startNewLoop() {
 }
 
 window.addEventListener('beforeunload', () => {
-  const resultsElements = document.querySelectorAll('.score-list-item');
-  const results = resultsElements.map(element => element.textContent);
-  localStorage.setItem('archive', JSON.stringify(results));
+  console.log('yes');
+  const resultsElements = Array.from(document.querySelectorAll('.score-list-item'));
+  console.log(resultsElements);
+  const results = JSON.stringify(resultsElements.map(element => element.textContent));
+  console.log(results);
+  localStorage.setItem('archive', results);
 });

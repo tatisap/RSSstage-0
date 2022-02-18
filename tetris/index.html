@@ -9,20 +9,42 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div class="game-container">
-    <div class="game-field-wrapper">
-      <div class="game-field"></div>
+  <header class="header">
+    <h1 class="header-title">Tetris</h1>
+  </header>
+  <main class="main">
+    <div class="game-container">
+      <div class="game-field-wrapper">
+        <div class="game-field"></div>
+      </div>
+      <div class="controls">
+        <button class="open-score-button">Score</button>
+      </div>
+      <div class="dialog-window-wrapper">
+        <div class="dialog-window">
+          <p class="dialog-window-title">Start</p>
+          <p class="dialog-window-info">Press 'New game' to start</p>
+          <button class="dialog-window-start-button">New game</button>
+        </div>
+      </div>
+      <div class="score-wrapper">
+        <div class="score-list-wrapper">
+          <p class="score-list-title">Score</p>
+          <button class="close-score-button">X</button>
+        </div>
+      </div>
     </div>
-    <div class="controls">
-      <button class="score">Score</button>
+  </main>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="left-side">
+        <span>©</span><span>2022</span><a class="github-link" href="https://github.com/tatisap">tatisap</a>
+      </div>
+      <div class="right-side">
+        <div class="rs-link"><a href="https://rs.school/js-stage0/"></a></div>
+      </div>
     </div>
-  </div>
-  <div class="start-game">
-    <p class="greeting">Press 'New game' for start</p>
-    <button class="start-new-game">New game</button>
-  </div>
-  <div class="restart-game"></div>
-  <div class="score-list-wrapper"></div>
+  </footer>
   <script type="module" src="./index.js"></script>
 </body>
 </html>

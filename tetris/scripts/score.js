@@ -21,12 +21,13 @@ export function initScoreList(archive) {
 
   container.append(scoreList);
 
-  if (archive !== '{}') {
+  if (archive) {
     let data = JSON.parse(archive);
     data.forEach(result => {
       let scoreListItem = document.createElement('li');
       scoreListItem.classList.add('score-list-item');
-      scoreList.append(scoreListItem)
+      scoreListItem.textContent = result;
+      scoreList.append(scoreListItem);
     });
   }
 }

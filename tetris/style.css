@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'Quicksand';
+  src: url(./assets/fonts/Quicksand-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'BungeeShade';
+  src: url(./assets/fonts/BungeeShade-Regular.ttf);
+  font-weight: 400;
+}
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth; 
@@ -10,14 +21,27 @@ html {
 body {
   background-color: #1c1c1c;
   color: white;
+  font-family: 'Quicksand';
+  font-size: 24px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header-title{
+  margin: 20px auto;
+  color: wheat;
+  font-family: 'BungeeShade';
+  font-size: 50px;
 }
 .game-container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   width: 630px;
   margin: 0 auto;
   padding: 5px;
-  box-shadow: 3px 2px 54px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 2px 45px 0px rgba(0,0,0,0.75);
 }
 .game-field-wrapper {
   width: 452px;
@@ -31,11 +55,6 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
-.controls {
-  width: 150px;
-  height: 720px;
-  border: wheat 1px solid;
 }
 .cell {
   width: 45px;
@@ -63,26 +82,125 @@ body {
   height: 100%;
   box-shadow: 6px 6px 2px 6px rgba(34, 60, 80, 0.2);
 }
-.start-game {
-  position: absolute;
-  top: calc(100vh / 2 - 350px);
-  left: calc(100vw / 2 - 220px);;
+.controls {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 150px;
+  height: 720px;
+  border: wheat 1px solid;
+  padding: 20px 0;
+}
+.dialog-window-wrapper,
+.score-wrapper {
+  position: absolute;
+  width: 452px;
+  height: 722px;
+  background-color: rgba(0,0,0,0.75);
+}
+.dialog-window,
+.score-list-wrapper {
+  position: absolute;
+  top: 171px;
+  left: 51px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
   height: 300px;
+  border-radius: 10px;
+  padding: 40px 20px;
   background-color: #1c1c1c;
-  box-shadow: 0px 0px 100vmax 100vmax rgba(0,0,0,0.75);
+  outline: wheat 2px solid;
+}
+.dialog-window-title,
+.score-list-title {
+  margin: 0;
+  font-family: 'BungeeShade';
+  font-size: 36px;
+  color: wheat;
+}
+.dialog-window-start-button,
+.open-score-button {
+  width: 150px;
+  height: 40px;
+  background-color: wheat;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 5px;
+  margin: 10px;
+  transition: all 0.3s linear;
+  transform: rotateZ(-5deg);
+}
+.dialog-window-start-button:hover,
+.open-score-button:hover {
+  font-size: 22px;
+  cursor:pointer;
+  transform: rotateZ(0deg);
+  box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.75);
+}
+.open-score-button {
+  width: 100px;
+}
+.score-wrapper {
+  display: none;
 }
 .score-list-wrapper {
-  display: none;
+  position: relative;
+  top: 80px;
+  height: 450px;
+}
+.close-score-button {
   position: absolute;
-  top: 100px;
-  left: calc(100vw / 2 - 220px);
-  width: 300px;
-  height: 300px;
-  background-color: #1c1c1c;
-  box-shadow: 0px 0px 100vmax 100vmax rgba(0,0,0,0.75);
+  top: 5px;
+  right: 5px;
+  border: 0;
+  border-radius: 2px;
+  background-color: wheat;
+  cursor: pointer;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 630px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.left-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.github-link,
+.github-link:visited {
+  color: white;
+  text-decoration: none;
+}
+.github-link:hover {
+  color: wheat;
+}
+.rs-link {
+  width: 104px;
+  height: 48px;
+  border-radius: 10px;
+  background-color: white;
+  background-image: url('./assets/rs_school_js.svg');
+  background-size: 94px 38px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+}
+.rs-link:hover {
+  transform: scale(1.1);
+}
+.rs-link a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }

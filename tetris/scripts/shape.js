@@ -66,6 +66,7 @@ export class Shape {
     return (side === 'left') ? xCoords.some(x => x <= 0) : xCoords.some(x => x >= wall.width - 1);
   }
   handleEvent(event) {
+    event.preventDefault();
     switch (event.code) {
       case 'ArrowLeft': if (!checkCollision(this, 'left')) this.moveLeft(1);
         break;
