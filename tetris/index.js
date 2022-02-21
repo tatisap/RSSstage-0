@@ -43,7 +43,10 @@ function switchWindow(event) {
   if (event.target.classList.contains('open')) actionResult = 'block';
   if (event.target.classList.contains('close')) actionResult = 'none';
   if (event.target.classList.contains('attention-window-button')) attentionWindow.style.display = actionResult;
-  if (event.target.classList.contains('score-window-button')) scoreWindow.style.display = actionResult;
+  if (event.target.classList.contains('score-window-button')) {
+    if (helpWindow.style.display === 'block') helpWindow.style.display = 'none';
+    scoreWindow.style.display = actionResult;
+  }
   if (event.target.classList.contains('help-window-button')) helpWindow.style.display = actionResult;
 }
 
