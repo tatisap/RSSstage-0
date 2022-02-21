@@ -1,6 +1,5 @@
 import { wall } from './global.js';
 import { checkCollision } from './collision-checker.js';
-import { sounds } from '../index.js';
 
 export class Shape {
   constructor(blocks) {
