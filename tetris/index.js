@@ -25,6 +25,7 @@ const attentionWindow = document.querySelector('.attention-window');
 const controlButtons = document.querySelectorAll('button.move');
 const volumeButton = document.querySelector('.volume');
 const helpWindow = document.querySelector('.help-window-wrapper');
+const currentScore = document.querySelector('.score-value');
 
 let isGameOver = false;
 let resultValue = 0;
@@ -81,6 +82,7 @@ function startNewLoop() {
       let n = wall.getFullRows().length;
       if (n !== 0) sounds.eraseLineSound.play();
       resultValue += getPoints(n);
+      currentScore.textContent = `${resultValue}`;
       wall.update();
       startNewLoop();
     }
@@ -94,6 +96,8 @@ playButton.addEventListener('click', () => {
   if (nameField.value.length <= 12) {
     sounds.newGameSound.play();
     dialog.style.display = 'none';
+    currentScore.textContent = '0';
+
     if (firstGame) {
       dialogTitle.textContent = 'Game over';
       nameForm.style.display = 'none';
@@ -122,3 +126,12 @@ nameForm.addEventListener('submit', (event) => {
 
 displayButtons.forEach(button => button.addEventListener('click', (event) => switchWindow(event)));
 window.addEventListener('beforeunload', setLocalStorage);
+
+console.log('Cамооценка: \n' +
+ '1) Вёрстка +10; \n' +
+ '2) Логика игры. Ходы, перемещения фигур, другие действия игрока подчиняются определённым свойственным игре правилам +10; \n' +
+ '3) Реализовано завершение игры при достижении игровой цели +10; \n' +
+ '4) По окончанию игры выводится её результат (выводится количество набранных очков) +10; \n' +
+ '5) Результаты последних 10 игр сохраняются в local storage. Есть таблица рекордов, в которой сохраняются результаты предыдущих 10 игр +10; \n' +
+ '6) Анимации или звуки, или настройки игры. Баллы начисляются за любой из перечисленных пунктов (есть звуки) +10; \n' +
+ '7) Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10.'); 

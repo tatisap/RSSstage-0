@@ -92,6 +92,11 @@ body {
   border: wheat 1px solid;
   padding: 20px 0;
 }
+.score-value {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+}
 button.move,
 button.volume,
 button.help-window-button.open {
