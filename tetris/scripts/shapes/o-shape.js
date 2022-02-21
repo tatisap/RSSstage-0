@@ -11,4 +11,5 @@ export class OShape extends Shape {
     super(blocks);
   }
   rotate() {}
+  cancelRotation() {}
 }

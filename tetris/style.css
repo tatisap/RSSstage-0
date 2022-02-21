@@ -86,20 +86,66 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 30px;
   width: 150px;
   height: 720px;
   border: wheat 1px solid;
   padding: 20px 0;
 }
+button.move,
+button.volume,
+button.help {
+  width: 50px;
+  height: 50px;
+  border: 0;
+  background-color: transparent;
+  background-size: 50px 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transform: scale(0.9);
+  transition: 0.3s;
+}
+button.move:hover,
+button.volume:hover,
+button.help:hover {
+  transform: scale(1.0);
+}
+#left {
+  background-image: url('./assets/svg/arrow-left.svg');
+}
+#right {
+  background-image: url('./assets/svg/arrow-right.svg');
+}
+#down {
+  background-image: url('./assets/svg/arrow-down.svg');
+}
+#rotate {
+  background-image: url('./assets/svg/arrow-rotate.svg');
+}
+#rotate:hover {
+  transform: rotate(-60deg);
+}
+.volume {
+  background-image: url('./assets/svg/volume.svg');
+}
+.volume.mute {
+  background-image: url('./assets/svg/mute.svg');
+}
+.help {
+  background-image: url('./assets/svg/question.svg');
+}
 .dialog-window-wrapper,
-.score-wrapper {
+.score-wrapper,
+.help-window-wrapper {
   position: absolute;
   width: 452px;
   height: 722px;
   background-color: rgba(0,0,0,0.75);
 }
 .dialog-window,
-.score-list-wrapper {
+.score-list-wrapper,
+.help-window {
   position: absolute;
   top: 171px;
   left: 51px;
@@ -108,21 +154,47 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 350px;
-  height: 300px;
+  height: 330px;
   border-radius: 10px;
   padding: 40px 20px;
   background-color: #1c1c1c;
   outline: wheat 2px solid;
 }
 .dialog-window-title,
-.score-list-title {
+.score-list-title,
+.help-window-title {
   margin: 0;
+  margin-bottom: 20px;
   font-family: 'BungeeShade';
   font-size: 36px;
   color: wheat;
 }
+.dialog-window-form {
+  display: flex;
+  justify-content: center;
+}
+.gamer-name {
+width: 230px;
+height: 35px;
+padding: 0;
+padding: 0 10px;
+border: wheat 1px solid;
+border-radius: 10px;
+background-color: rgb(255, 255, 255, 0.15);
+color: white;
+font-size: 20px;
+}
+.gamer-name:focus {
+outline: none;
+}
+.dialog-window-score {
+  display: none;
+  margin: 0;
+  text-align: center;
+}
 .dialog-window-start-button,
-.open-score-button {
+.open-score-button, 
+.attention-close-button {
   width: 150px;
   height: 40px;
   background-color: wheat;
@@ -136,11 +208,32 @@ body {
   transform: rotateZ(-5deg);
 }
 .dialog-window-start-button:hover,
-.open-score-button:hover {
+.open-score-button:hover,
+.attention-close-button:hover {
   font-size: 22px;
   cursor:pointer;
   transform: rotateZ(0deg);
   box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.75);
+}
+.attention {
+  position: absolute;
+  top: 176px;
+  left: 56px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 345px;
+  height: 330px;
+  border-radius: 10px;
+  padding: 40px 20px;
+  background-color: #1c1c1c;
+}
+.attention-text {
+  text-align: center;
+}
+.attention-close-button {
+  width: 100px;
 }
 .open-score-button {
   width: 100px;
@@ -151,9 +244,16 @@ body {
 .score-list-wrapper {
   position: relative;
   top: 80px;
+  left: 30px;
+  justify-content: flex-start;
+  width: 400px;
   height: 450px;
 }
-.close-score-button {
+.score-list {
+  margin: 0;
+}
+.close-score-button,
+.close-help-button {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -161,6 +261,44 @@ body {
   border-radius: 2px;
   background-color: wheat;
   cursor: pointer;
+}
+.help-window-wrapper {
+  display: none;
+}
+.help-window {
+  position: relative;
+  padding-top: 20px;
+}
+.help-list {
+  margin: 0;
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+.item-img {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  background-size: 50px 50px;
+  background-position: center;
+}
+.help-list-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+li.help-list-item:nth-child(1) .item-img {
+  background-image: url('./assets/svg/left-arrow-button.svg');
+}
+li.help-list-item:nth-child(2) .item-img {
+  background-image: url('./assets/svg/right-arrow-button.svg');
+}
+li.help-list-item:nth-child(3) .item-img {
+  background-image: url('./assets/svg/down-arrow-button.svg');
+}
+li.help-list-item:nth-child(4) .item-img {
+  background-image: url('./assets/svg/up-arrow-button.svg');
 }
 .footer-container {
   display: flex;

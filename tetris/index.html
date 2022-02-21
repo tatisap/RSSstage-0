@@ -19,18 +19,52 @@
       </div>
       <div class="controls">
         <button class="open-score-button">Score</button>
+        <button class="move" id="left"></button>
+        <button class="move" id="right"></button>
+        <button class="move" id="down"></button>
+        <button class="move" id="rotate"></button>
+        <button class="volume"></button>
+        <button class="help"></button>
       </div>
       <div class="dialog-window-wrapper">
         <div class="dialog-window">
           <p class="dialog-window-title">Start</p>
+          <form class="dialog-window-form">
+            <input class="gamer-name" name="name" type="text" placeholder="Enter your nickname..." autocomplete="off" autofocus>
+          </form>
+          <p class="dialog-window-score"></p>
           <p class="dialog-window-info">Press 'New game' to start</p>
           <button class="dialog-window-start-button">New game</button>
         </div>
+      </div>
+      <div class="attention">
+        <p class="attention-text"></p>
+        <button class="attention-close-button">OK</button>
       </div>
       <div class="score-wrapper">
         <div class="score-list-wrapper">
           <p class="score-list-title">Score</p>
           <button class="close-score-button">X</button>
+        </div>
+      </div>
+      <div class="help-window-wrapper">
+        <div class="help-window">
+          <p class="help-window-title">Help</p>
+          <ul class="help-list">
+            <li class="help-list-item">
+              <div class="item-img"></div><span class="item-text">move left</span>
+            </li>
+            <li class="help-list-item">
+              <div class="item-img"></div><span class="item-text">move right</span>
+            </li>
+            <li class="help-list-item">
+              <div class="item-img"></div><span class="item-text">move down</span>
+            </li>
+            <li class="help-list-item">
+              <div class="item-img"></div><span class="item-text">rotate</span>
+            </li>
+          </ul>
+          <button class="close-help-button">X</button>
         </div>
       </div>
     </div>

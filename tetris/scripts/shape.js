@@ -1,5 +1,6 @@
 import { wall } from './global.js';
 import { checkCollision } from './collision-checker.js';
+import { sounds } from '../index.js';
 
 export class Shape {
   constructor(blocks) {
@@ -59,7 +60,7 @@ export class Shape {
     const coords = this.getCurrentPositions();
     const xCoords = coords.map(position => position.x);
     const yCoords = coords.map(position => position.y);
-    return xCoords.every(x => Object.keys(wall.rows[0].bricks).includes(x)) && yCoords.every(y => Object.keys(wall.rows).includes(y));
+    return xCoords.every(x => Object.keys(wall.rows[0].bricks).includes(`${x}`)) && yCoords.every(y => Object.keys(wall.rows).includes(`${y}`));
   }
   isOutOfField(side) {
     let xCoords = this.getCurrentPositions().map(position => position.x);
@@ -67,14 +68,19 @@ export class Shape {
   }
   handleEvent(event) {
     event.preventDefault();
-    switch (event.code) {
-      case 'ArrowLeft': if (!checkCollision(this, 'left')) this.moveLeft(1);
+    let property = (event.type === 'click') ? event.target.id : event.code;
+    switch (property) {
+      case 'ArrowLeft':
+      case 'left': if (!checkCollision(this, 'left')) this.moveLeft(1);
         break;
-      case 'ArrowRight': if (!checkCollision(this, 'right')) this.moveRight(1);
+      case 'ArrowRight':
+      case 'right': if (!checkCollision(this, 'right')) this.moveRight(1);
         break;
-      case 'ArrowDown': if (!checkCollision(this, 'down')) this.moveDown();
+      case 'ArrowDown':
+      case 'down': if (!checkCollision(this, 'down')) this.moveDown();
         break;
-      case 'ArrowUp': {
+      case 'ArrowUp':
+      case 'rotate': {
         this.rotate();
         if (!this.isOnField(wall)) {
           let diff = 0;
@@ -85,15 +91,14 @@ export class Shape {
               this.cancelRotation();
               this.moveLeft(diff);
             }
-          }
-          if (this.isOutOfField('right')) {
+          } else if (this.isOutOfField('right')) {
             diff = this.getMaxXBlocksPosition() - 9;
             this.moveLeft(diff);
             if (checkCollision(this, 'none')) {
               this.cancelRotation();
               this.moveRight(diff);
             }
-          }
+          } else if (checkCollision(this, 'none')) this.cancelRotation();
         } else if (checkCollision(this, 'none')) this.cancelRotation();
       }
     }
