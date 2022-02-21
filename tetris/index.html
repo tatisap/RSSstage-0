@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris</title>
+  <link rel="icon" href="./assets/favicon.ico">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="header-title">Tetris</h1>
+  </header>
+  <main class="main">
+    <div class="game-container">
+      <div class="game-field-wrapper">
+        <div class="game-field"></div>
+      </div>
+      <div class="controls">
+        <div class="score-value">0</div>
+        <button class="score-window-button open">Score</button>
+        <button class="move" id="left"></button>
+        <button class="move" id="right"></button>
+        <button class="move" id="down"></button>
+        <button class="move" id="rotate"></button>
+        <button class="volume"></button>
+        <button class="help-window-button open"></button>
+      </div>
+      <div class="dialog-window-wrapper">
+        <div class="dialog-window">
+          <p class="dialog-window-title">Start</p>
+          <form class="dialog-window-form">
+            <input class="gamer-name" name="name" type="text" placeholder="Enter your nickname..." autocomplete="off" autofocus>
+          </form>
+          <p class="dialog-window-score"></p>
+          <p class="dialog-window-info">Press 'New game' to start</p>
+          <button class="dialog-window-start-button">New game</button>
+        </div>
+      </div>
+      <div class="attention-window">
+        <p class="attention-window-text"></p>
+        <button class="attention-window-button close">OK</button>
+      </div>
+      <div class="score-window-wrapper">
+        <div class="score-list-wrapper">
+          <p class="score-list-title">Score</p>
+          <button class="score-window-button close">X</button>
+        </div>
+      </div>
+      <div class="help-window-wrapper">
+        <div class="help-window">
+          <p class="help-window-title">Help</p>
+          <ul class="help-list">
+            <li class="help-list-item">
+              <div class="item-img"></div><span class="item-text">move left</span>
+            </li>
+            <li class="help-list-item">
+              <div class="item-img"></div><span class="item-text">move right</span>
+            </li>
+            <li class="help-list-item">
+              <div class="item-img"></div><span class="item-text">move down</span>
+            </li>
+            <li class="help-list-item">
+              <div class="item-img"></div><span class="item-text">rotate</span>
+            </li>
+          </ul>
+          <button class="help-window-button close">X</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="left-side">
+        <span>©</span><span>2022</span><a class="github-link" href="https://github.com/tatisap">tatisap</a>
+      </div>
+      <div class="right-side">
+        <div class="rs-link"><a href="https://rs.school/js-stage0/"></a></div>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
